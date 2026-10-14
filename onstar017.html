@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-4-1) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-4-1) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "Self-awareness is a foundation for your journey, but for a potential leader, the secret to long-term success is to build upon your self-understanding in order to achieve self-mastery.", korean: "자기 인식은 당신의 여정을 위한 기초이지만, 잠재적인 리더에게 장기적인 성공의 비결은 자기 이해를 바탕으로 자기 통달을 이루는 것입니다." },
+            { english: "Too many lack self-confidence or find the obstacles too big.", korean: "너무 많은 사람들이 자신감을 잃거나 장애물이 너무 크다고 느낍니다." },
+            { english: "They give up their quest too soon and ultimately fall short.", korean: "그들은 너무 일찍 그들의 탐구를 포기하고 결국 실패합니다." },
+            { english: "But history shows many, many examples of others who persevered against all odds — and became authors of their own lives.", korean: "하지만 역사는 모든 역경에도 불구하고 끈기 있게 버티며 자기 삶의 주인이 된 수많은 사례를 보여줍니다." },
+            { english: "Before you can persuade others to follow, you must focus on building up your strengths, relentlessly improve your performance, and conquer your dangerous weaknesses.", korean: "다른 사람들을 설득하여 따르게 하기 전에, 당신은 자신의 강점을 키우는 데 집중하고, 끊임없이 성과를 개선하며, 자신의 위험한 약점을 정복해야 합니다." },
+            { english: "Again, there are no guarantees in life—but you won’t know for sure how successful you will be until you give it your best effort.", korean: "다시 말하지만, 인생에는 보장이 없지만, 최선을 다하지 않으면 자신이 얼마나 성공할지 확실히 알 수 없습니다." }
+        ];
+
+        const vocabulary = {
+            "self-awareness": "자기 인식",
+            "foundation": "기초",
+            "journey": "여정",
+            "potential": "잠재적인",
+            "leader": "리더",
+            "secret": "비결",
+            "long-term": "장기적인",
+            "success": "성공",
+            "build": "구축하다",
+            "upon": "위에",
+            "self-understanding": "자기 이해",
+            "in order to": "하기 위해",
+            "achieve": "이루다",
+            "self-mastery": "자기 통달",
+            "too": "너무",
+            "many": "많은",
+            "lack": "결핍되다",
+            "self-confidence": "자신감",
+            "find": "발견하다",
+            "obstacles": "장애물",
+            "big": "큰",
+            "give up": "포기하다",
+            "quest": "탐구",
+            "soon": "곧",
+            "ultimately": "결국",
+            "fall short": "실패하다",
+            "history": "역사",
+            "shows": "보여주다",
+            "examples": "사례들",
+            "others": "다른 사람들",
+            "persevered": "끈기 있게 버티다",
+            "against": "대항하여",
+            "odds": "역경",
+            "became": "되었다",
+            "authors": "주인",
+            "their": "그들의",
+            "own": "자신의",
+            "lives": "삶",
+            "persuade": "설득하다",
+            "follow": "따르다",
+            "focus": "집중하다",
+            "building up": "강화하다",
+            "strengths": "강점",
+            "relentlessly": "끊임없이",
+            "improve": "개선하다",
+            "performance": "성과",
+            "conquer": "정복하다",
+            "dangerous": "위험한",
+            "weaknesses": "약점",
+            "again": "다시",
+            "guarantees": "보장",
+            "life": "인생",
+            "successful": "성공적인",
+            "until": "할 때까지",
+            "give it your best effort": "최선을 다하다"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

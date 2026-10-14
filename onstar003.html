@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-1-2) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-1-2) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "The first few kilometres of the trail snaked through thin, native bush beside the Deception River.", korean: "첫 몇 킬로미터의 길은 속임수 강 옆의 얇고 토착적인 숲을 구불구불하게 지나갔다." },
+            { english: "It didn’t take long for the first river crossing to present itself.", korean: "첫 번째 강을 건너는 곳이 나타나는 데 오래 걸리지 않았다." },
+            { english: "I slowly crossed the thunderous river.", korean: "나는 천둥치는 강을 천천히 건넜다." },
+            { english: "The water was over my knees and so much colder than I expected.", korean: "물이 무릎 위로 차올랐고 예상보다 훨씬 차가웠다." },
+            { english: "I felt a burst of energy.", korean: "나는 에너지의 폭발을 느꼈다." },
+            { english: "I really do love the river crossings, and there were so many over the next couple of hours.", korean: "나는 정말 강을 건너는 것을 좋아하고, 다음 몇 시간 동안 매우 많았다." },
+            { english: "My adrenaline was up from all the crossings and I was amazed by the beauty of the river.", korean: "모든 건널목에서 아드레날린이 솟구쳤고 강의 아름다움에 놀랐다." },
+            { english: "The water was perfectly clear with heavy waterfalls and whitecapped rapids constantly flowing.", korean: "물이 완벽히 맑았고, 무거운 폭포와 하얀 물결이 끊임없이 흘렀다." },
+            { english: "It was a scene of majestic natural wonder.", korean: "그것은 웅장한 자연의 경이로움의 한 장면이었다." },
+            { english: "Breathtaking crystal clear pools were built up everywhere.", korean: "숨막히는 맑은 물웅덩이가 곳곳에 형성되었다." },
+            { english: "The valley was narrow, with tall, steep hills of the rugged Aicken Range reaching high and leaving only a bit of overcast sky above.", korean: "계곡은 좁았고, 울퉁불퉁한 에이컨 산맥의 높고 가파른 언덕이 하늘 위로 이어지며 약간의 흐린 하늘만 남겼다." },
+            { english: "“Awesome!” I exclaimed.", korean: "“굉장하다!”라고 나는 외쳤다." },
+            { english: "The river raced past me, like a never-ending, horizontal waterfall, as I moved up the steep valley.", korean: "강은 끝없이 수평 폭포처럼 나를 스쳐 지나갔고, 나는 가파른 계곡을 올라갔다." }
+        ];
+
+        const vocabulary = {
+            "first": "첫",
+            "few": "몇",
+            "kilometres": "킬로미터",
+            "trail": "길",
+            "snaked": "구불구불했다",
+            "through": "통과하여",
+            "thin": "얇은",
+            "native": "토착의",
+            "bush": "숲",
+            "beside": "옆에",
+            "deception": "속임수",
+            "river": "강",
+            "didn’t": "하지 않았다",
+            "take": "걸리다",
+            "long": "오래",
+            "crossing": "건너는 것",
+            "present": "나타나다",
+            "itself": "그 자체",
+            "slowly": "천천히",
+            "crossed": "건넜다",
+            "thunderous": "천둥치는",
+            "water": "물",
+            "over": "위로",
+            "knees": "무릎",
+            "colder": "더 차가운",
+            "expected": "기대한",
+            "felt": "느꼈다",
+            "burst": "폭발",
+            "energy": "에너지",
+            "really": "정말",
+            "love": "사랑하다",
+            "so": "그래서",
+            "many": "많은",
+            "couple": "몇",
+            "hours": "시간",
+            "adrenaline": "아드레날린",
+            "beauty": "아름다움",
+            "perfectly": "완벽히",
+            "clear": "맑은",
+            "heavy": "무거운",
+            "waterfalls": "폭포",
+            "whitecapped": "하얀 물결이 이는",
+            "rapids": "급류",
+            "constantly": "끊임없이",
+            "flowing": "흐르다",
+            "scene": "장면",
+            "majestic": "웅장한",
+            "natural": "자연의",
+            "wonder": "경이로움",
+            "breathtaking": "숨막히는",
+            "crystal": "맑은",
+            "pools": "웅덩이",
+            "everywhere": "곳곳에",
+            "valley": "계곡",
+            "narrow": "좁은",
+            "tall": "높은",
+            "steep": "가파른",
+            "hills": "언덕",
+            "rugged": "울퉁불퉁한",
+            "range": "산맥",
+            "reaching": "이어지다",
+            "high": "높은",
+            "leaving": "남기다",
+            "bit": "약간",
+            "overcast": "흐린",
+            "sky": "하늘",
+            "above": "위에",
+            "awesome": "굉장하다",
+            "exclaimed": "외쳤다",
+            "raced": "질주하다",
+            "past": "지나서",
+            "never-ending": "끝없는",
+            "horizontal": "수평의",
+            "waterfall": "폭포",
+            "moved": "움직였다",
+            "up": "위로",
+            "steep": "가파른"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

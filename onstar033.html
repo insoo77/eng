@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-7-2) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-7-2) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "Bioseventech Job Shadow Day", korean: "바이오세븐텍 직업 체험의 날" },
+            { english: "The university career department will be hosting a job shadow day.", korean: "대학 경력 부서에서 직업 체험의 날을 주최합니다." },
+            { english: "Date: Wednesday, August 14th", korean: "날짜: 8월 14일 수요일" },
+            { english: "Time: 1:00 –4:00 PM (online event)", korean: "시간: 오후 1시~4시 (온라인 행사)" },
+            { english: "This event is in partnership with Bioseventech, a biotechnology company.", korean: "이 행사는 바이오 기술 회사인 바이오세븐텍과 협력하여 진행됩니다." },
+            { english: "It will provide students with an informative look into what it’s like to work in the biotechnology industry.", korean: "이 행사는 학생들에게 바이오 기술 산업에서 일하는 것이 어떤지에 대한 유익한 정보를 제공합니다." },
+            { english: "Students will be able to meet our staff online and learn about the work they do and how it may relate to students’ interests.", korean: "학생들은 온라인으로 저희 직원들을 만나 그들이 하는 일과 학생들의 관심사와의 연관성을 배울 수 있습니다." },
+            { english: "Eligibility", korean: "참가 자격" },
+            { english: "– Must be in 10th or 11th grade", korean: "– 10학년 또는 11학년이어야 합니다." },
+            { english: "– Minimum GPA of 2.5", korean: "– 최소 GPA는 2.5이어야 합니다." },
+            { english: "– Registration must be done at least one week prior to the event using the link below.", korean: "– 아래 링크를 사용하여 행사 최소 1주 전에 등록해야 합니다." },
+            { english: "– Students who have attended a previous Bioseventech job shadow day are not allowed to participate.", korean: "– 이전에 바이오세븐텍 직업 체험의 날에 참석한 학생은 참가할 수 없습니다." },
+            { english: "Registration link: https://docs.bioseventech.com/forms", korean: "등록 링크: https://docs.bioseventech.com/forms" }
+        ];
+
+        const vocabulary = {
+            "Bioseventech": "바이오세븐텍",
+            "Job Shadow Day": "직업 체험의 날",
+            "university career department": "대학 경력 부서",
+            "hosting": "주최하다",
+            "Date": "날짜",
+            "Wednesday, August 14th": "8월 14일 수요일",
+            "Time": "시간",
+            "1:00 –4:00 PM": "오후 1시~4시",
+            "online event": "온라인 행사",
+            "partnership": "협력",
+            "biotechnology company": "바이오 기술 회사",
+            "provide": "제공하다",
+            "students": "학생들",
+            "informative": "유익한",
+            "look into": "~에 대해 살펴보다",
+            "working in the biotechnology industry": "바이오 기술 산업에서 일하기",
+            "meet our staff online": "온라인으로 저희 직원들을 만나다",
+            "learn about": "~에 대해 배우다",
+            "relate to students’ interests": "학생들의 관심사와 연관되다",
+            "Eligibility": "참가 자격",
+            "Must be in 10th or 11th grade": "10학년 또는 11학년이어야 합니다",
+            "Minimum GPA of 2.5": "최소 GPA는 2.5",
+            "Registration": "등록",
+            "one week prior to the event": "행사 최소 1주 전에",
+            "using the link below": "아래 링크를 사용하여",
+            "Students who have attended a previous Bioseventech job shadow day": "이전에 바이오세븐텍 직업 체험의 날에 참석한 학생",
+            "are not allowed to participate": "참가할 수 없습니다",
+            "Registration link": "등록 링크"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

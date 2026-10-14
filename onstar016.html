@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-4-0) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-4-0) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "Technology can help you find material that will enrich your reading.", korean: "기술은 당신이 독서를 풍요롭게 할 자료를 찾는 데 도움을 줄 수 있습니다." },
+            { english: "As you no doubt recognize, the information available on the Internet is increasing at an astonishing rate that shows no signs of slowing down.", korean: "당신도 의심할 여지 없이 알고 있듯이, 인터넷에서 얻을 수 있는 정보는 놀라운 속도로 증가하고 있으며, 그 속도가 줄어들 기미를 보이지 않습니다." },
+            { english: "Information from the Internet has many advantages for the user, not the least of which is its easy accessibility.", korean: "인터넷에서 얻은 정보는 사용자를 위해 많은 장점을 가지고 있으며, 그 중 하나는 쉽게 접근할 수 있다는 점입니다." },
+            { english: "However, anyone who uses the Internet should be aware of some of its shortcomings.", korean: "그러나 인터넷을 사용하는 사람은 그 단점 중 일부를 인식해야 합니다." },
+            { english: "Simply put, online material is not always reliable.", korean: "간단히 말하면, 온라인 자료는 항상 신뢰할 수 있는 것은 아닙니다." },
+            { english: "First of all, because of the easy access, anyone can create a Web site or post comments to various groups.", korean: "우선, 접근이 쉬워서 누구나 웹사이트를 만들거나 다양한 그룹에 댓글을 게시할 수 있습니다." },
+            { english: "The result is that not all information on the Internet can be trusted.", korean: "그 결과, 인터넷의 모든 정보가 신뢰할 수 있는 것은 아닙니다." },
+            { english: "You must always question the source of material that you find.", korean: "당신이 찾은 자료의 출처를 항상 의심해야 합니다." },
+            { english: "Even addresses that end in .edu, which some people tend to assume are reputable because they are located at universities, can pose problems.", korean: "심지어 .edu로 끝나는 주소도 일부 사람들이 대학에 위치해 있어서 신뢰할 만하다고 생각하지만, 문제가 될 수 있습니다." },
+            { english: "As students come and go and courses change, such sites are very likely to move or disappear without warning.", korean: "학생들이 오가고 강의가 변경되면서, 그러한 사이트는 경고 없이 이동하거나 사라질 가능성이 매우 높습니다." }
+        ];
+
+        const vocabulary = {
+            "technology": "기술",
+            "can": "할 수 있다",
+            "help": "도움이 되다",
+            "you": "당신",
+            "find": "찾다",
+            "material": "자료",
+            "that": "것",
+            "will": "할 것이다",
+            "enrich": "풍요롭게 하다",
+            "your": "당신의",
+            "reading": "독서",
+            "as": "처럼",
+            "no": "아니다",
+            "doubt": "의심",
+            "recognize": "알다",
+            "information": "정보",
+            "available": "이용 가능한",
+            "on": "위에",
+            "the": "그",
+            "internet": "인터넷",
+            "is": "이다",
+            "increasing": "증가하는",
+            "at": "에",
+            "an": "하나의",
+            "astonishing": "놀라운",
+            "rate": "속도",
+            "shows": "보여주다",
+            "signs": "기미",
+            "slowing": "늦추다",
+            "down": "아래로",
+            "from": "로부터",
+            "has": "가지다",
+            "many": "많은",
+            "advantages": "장점",
+            "for": "위한",
+            "user": "사용자",
+            "not": "아니다",
+            "least": "최소",
+            "of": "의",
+            "which": "어느",
+            "its": "그것의",
+            "easy": "쉬운",
+            "accessibility": "접근성",
+            "however": "그러나",
+            "anyone": "누구나",
+            "who": "누구",
+            "uses": "사용하다",
+            "should": "해야 한다",
+            "be": "되다",
+            "aware": "알다",
+            "some": "몇몇",
+            "shortcomings": "단점",
+            "simply": "단순히",
+            "put": "놓다",
+            "online": "온라인의",
+            "always": "항상",
+            "reliable": "신뢰할 수 있는",
+            "first": "첫 번째",
+            "all": "모든",
+            "because": "때문에",
+            "access": "접근",
+            "anyone": "누구나",
+            "create": "만들다",
+            "web": "웹",
+            "site": "사이트",
+            "post": "게시하다",
+            "comments": "댓글",
+            "various": "다양한",
+            "groups": "그룹들",
+            "result": "결과",
+            "trusted": "신뢰된",
+            "must": "반드시",
+            "question": "질문하다",
+            "source": "출처",
+            "even": "심지어",
+            "addresses": "주소들",
+            "end": "끝나다",
+            "edu": ".edu",
+            "which": "어느",
+            "some": "몇몇",
+            "people": "사람들",
+            "tend": "하는 경향이 있다",
+            "assume": "추정하다",
+            "reputable": "평판이 좋은",
+            "located": "위치한",
+            "at": "에",
+            "universities": "대학들",
+            "pose": "제기하다",
+            "problems": "문제들",
+            "students": "학생들",
+            "come": "오다",
+            "go": "가다",
+            "courses": "강의들",
+            "change": "변경되다",
+            "such": "그러한",
+            "sites": "사이트들",
+            "move": "이동하다",
+            "disappear": "사라지다",
+            "without": "없이",
+            "warning": "경고"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

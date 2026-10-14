@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-2-2) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-2-2) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "As state subsidies for autonomous art and artists are continuously reduced, it is indispensable to remove the bias of copyright law in favour of profit-oriented mainstream productions.", korean: "자율적인 예술과 예술가에 대한 국가 보조금이 지속적으로 줄어듦에 따라, 이익 지향적인 주류 제작을 선호하는 저작권법의 편향을 제거하는 것이 필수적입니다." },
+            { english: "In the absence of public funds for the creation of independent literature and art, it would be disastrous not to take measures supporting autonomous productions in copyright law.", korean: "독립 문학과 예술 창작을 위한 공공 기금이 없는 상황에서, 저작권법에서 자율적인 제작을 지원하는 조치를 취하지 않는 것은 재앙적일 것입니다." },
+            { english: "Works of true art fulfil a function of particular importance in society.", korean: "진정한 예술 작품은 사회에서 특히 중요한 기능을 수행합니다." },
+            { english: "They offer alternative visions of life and society that can pave the way for necessary changes of social and political conditions.", korean: "그들은 삶과 사회에 대한 대안을 제시하여 사회적, 정치적 조건의 필요한 변화를 위한 길을 열 수 있습니다." },
+            { english: "Without these impulses provided by independent, autonomous art, society has fewer chances to evolve and overcome imperfections.", korean: "독립적이고 자율적인 예술이 제공하는 이러한 자극 없이는 사회가 발전하고 결점을 극복할 기회가 줄어듭니다." },
+            { english: "Hence, it is of particular importance to identify those features of copyright law that are capable of compensating for the loss of state subsidies and functioning as a driver of autonomous art.", korean: "따라서 국가 보조금의 손실을 보완하고 자율적인 예술의 동력으로 기능할 수 있는 저작권법의 특징을 파악하는 것이 특히 중요합니다." }
+        ];
+
+        const vocabulary = {
+            "as": "로서",
+            "state": "국가",
+            "subsidies": "보조금",
+            "autonomous": "자율적인",
+            "art": "예술",
+            "artists": "예술가들",
+            "are": "이다",
+            "continuously": "지속적으로",
+            "reduced": "줄어든",
+            "it": "그것",
+            "is": "이다",
+            "indispensable": "필수적인",
+            "remove": "제거하다",
+            "bias": "편향",
+            "copyright": "저작권",
+            "law": "법",
+            "in": "안에",
+            "favour": "선호",
+            "profit-oriented": "이익 지향적인",
+            "mainstream": "주류",
+            "productions": "제작",
+            "absence": "부재",
+            "public": "공공",
+            "funds": "기금",
+            "creation": "창작",
+            "independent": "독립적인",
+            "literature": "문학",
+            "would": "일 것이다",
+            "be": "되다",
+            "disastrous": "재앙적인",
+            "not": "않다",
+            "take": "취하다",
+            "measures": "조치",
+            "supporting": "지원하다",
+            "productions": "제작",
+            "works": "작품",
+            "true": "진정한",
+            "fulfil": "수행하다",
+            "function": "기능",
+            "particular": "특히",
+            "importance": "중요성",
+            "society": "사회",
+            "offer": "제공하다",
+            "alternative": "대안적인",
+            "visions": "비전",
+            "life": "삶",
+            "pave": "열다",
+            "way": "길",
+            "necessary": "필요한",
+            "changes": "변화",
+            "social": "사회적인",
+            "political": "정치적인",
+            "conditions": "조건",
+            "without": "없이",
+            "impulses": "자극",
+            "provided": "제공된",
+            "chances": "기회",
+            "evolve": "발전하다",
+            "overcome": "극복하다",
+            "imperfections": "결점",
+            "hence": "따라서",
+            "of": "의",
+            "identify": "파악하다",
+            "those": "그러한",
+            "features": "특징",
+            "capable": "할 수 있는",
+            "compensating": "보완하다",
+            "loss": "손실",
+            "functioning": "기능하다",
+            "driver": "동력"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

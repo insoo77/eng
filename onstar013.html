@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-3-2) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-3-2) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "Research suggesting that mental simulations make events seem real or true is voluminous.", korean: "정신적 시뮬레이션이 사건을 실제로 보이거나 사실로 보이게 만든다는 연구는 방대합니다." },
+            { english: "A number of experimental studies that have demonstrated these effects have manipulated subjects’ simulation of hypothetical events and then asked them to rate the likelihood of those events.", korean: "이러한 효과를 입증한 여러 실험 연구는 피험자들의 가상 사건 시뮬레이션을 조작한 후 그 사건들이 발생할 가능성을 평가하도록 요청했습니다." },
+            { english: "Consistently, after imagining that a given event will take place, people are more likely to believe it will actually occur.", korean: "일관되게, 특정 사건이 발생할 것이라고 상상한 후, 사람들은 그것이 실제로 일어날 것이라고 더 많이 믿는 경향이 있습니다." },
+            { english: "For example, W. Larry Gregory and his colleagues contacted homeowners about their likelihood of subscribing to a cable television service.", korean: "예를 들어, W. Larry Gregory와 그의 동료들은 주택 소유자들에게 케이블 텔레비전 서비스를 구독할 가능성에 대해 연락했습니다." },
+            { english: "Some of the homeowners were asked to imagine that they had cable and to envision all the benefits it would bring to them.", korean: "일부 주택 소유자들은 자신들이 케이블을 가지고 있다고 상상하고 그것이 가져올 모든 혜택을 그려보도록 요청받았습니다." },
+            { english: "Other homeowners were given a persuasive communication that described the advantages of subscribing to cable.", korean: "다른 주택 소유자들은 케이블 구독의 장점을 설명하는 설득력 있는 자료를 받았습니다." },
+            { english: "Results indicated that participants were more likely to intend to purchase cable and more likely actually to do so after performing the simulation exercise than after merely reading about the advantages of cable.", korean: "결과는 참가자들이 케이블의 장점에 대해 단순히 읽은 후보다 시뮬레이션 연습을 수행한 후에 케이블을 구매할 의도를 갖고 실제로 구매할 가능성이 더 높았음을 나타냈습니다." }
+        ];
+
+        const vocabulary = {
+            "research": "연구",
+            "suggesting": "제안하다",
+            "mental": "정신의",
+            "simulations": "시뮬레이션",
+            "make": "만들다",
+            "events": "사건들",
+            "seem": "보이다",
+            "real": "실제의",
+            "true": "사실의",
+            "is": "이다",
+            "voluminous": "방대한",
+            "number": "수",
+            "experimental": "실험적인",
+            "studies": "연구",
+            "demonstrated": "입증된",
+            "effects": "효과들",
+            "manipulated": "조작된",
+            "subjects": "피험자들",
+            "simulation": "시뮬레이션",
+            "hypothetical": "가상의",
+            "asked": "요청하다",
+            "them": "그들",
+            "rate": "평가하다",
+            "likelihood": "가능성",
+            "those": "그것들",
+            "consistently": "일관되게",
+            "after": "후에",
+            "imagining": "상상하다",
+            "given": "특정한",
+            "event": "사건",
+            "will": "할 것이다",
+            "take": "일어나다",
+            "place": "장소",
+            "people": "사람들",
+            "more": "더",
+            "likely": "가능성이 있는",
+            "believe": "믿다",
+            "actually": "실제로",
+            "occur": "발생하다",
+            "example": "예",
+            "larry": "래리",
+            "gregory": "그레고리",
+            "colleagues": "동료들",
+            "contacted": "연락했다",
+            "homeowners": "주택 소유자들",
+            "their": "그들의",
+            "subscribing": "구독하다",
+            "cable": "케이블",
+            "television": "텔레비전",
+            "service": "서비스",
+            "some": "일부",
+            "imagine": "상상하다",
+            "they": "그들",
+            "had": "가지고 있었다",
+            "envision": "그려보다",
+            "all": "모든",
+            "benefits": "혜택들",
+            "would": "할 것이다",
+            "bring": "가져오다",
+            "other": "다른",
+            "persuasive": "설득력 있는",
+            "communication": "자료",
+            "described": "설명하다",
+            "advantages": "장점들",
+            "results": "결과",
+            "indicated": "나타내다",
+            "participants": "참가자들",
+            "intend": "의도하다",
+            "purchase": "구매하다",
+            "performing": "수행하다",
+            "exercise": "연습",
+            "merely": "단지"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

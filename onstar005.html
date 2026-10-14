@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-1-4) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-1-4) </h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "For Miing, life here was a never-ending cycle of work with his freedom taken away.", korean: "미잉에게 이곳의 삶은 자유를 빼앗긴 채 끝없는 일의 반복이었다." },
+            { english: "His eyes blindly stared ahead, as his hands half-heartedly assembled the printed boards identical to the picture layout glued to the table.", korean: "그의 눈은 앞을 멍하니 응시했고, 그의 손은 테이블에 붙여진 사진 레이아웃과 동일한 인쇄판을 건성으로 조립했다." },
+            { english: "He had been sitting at the table for four hours without being allowed a break—even to use the toilet.", korean: "그는 화장실을 가는 것조차 허락받지 못하고 4시간 동안 테이블에 앉아 있었다." },
+            { english: "His skin was sickly pale.", korean: "그의 피부는 병적으로 창백했다." },
+            { english: "He was very tired and constantly felt that his life was a dark and stormy night.", korean: "그는 매우 피곤했고 그의 삶이 어둡고 폭풍우 치는 밤과 같다고 끊임없이 느꼈다." },
+            { english: "During dinner, Miing happened to have a chance to talk with a young woman working at the next table.", korean: "저녁 식사 중에 미잉은 옆 테이블에서 일하는 젊은 여성과 이야기를 나눌 기회를 가졌다." },
+            { english: "“I’m going to escape from this prison,” Miing said.", korean: "“나는 이 감옥에서 탈출할 거야,” 미잉이 말했다." },
+            { english: "“Do you want to come with me?”", korean: "“나랑 같이 갈래?”" },
+            { english: "Keeping her eyes on her plate, she said, “I have been thinking the same thing.”", korean: "접시에 시선을 고정한 채 그녀는 말했다, “나도 같은 생각을 하고 있었어.”" },
+            { english: "“Will you go with me?” Miing asked.", korean: "“나랑 같이 갈 거야?” 미잉이 물었다." },
+            { english: "She dared to look directly at him for a few seconds and replied after a long pause.", korean: "그녀는 몇 초 동안 용기를 내어 그를 직접 쳐다보았고, 오랜 침묵 끝에 대답했다." },
+            { english: "“I will try.”", korean: "“노력해볼게.”" },
+            { english: "“We must do it, not try. For my part, I will either escape or die,” declared Miing with a strong resolve.", korean: "“우리는 해야 해, 시도하는 게 아니라. 나는 탈출하거나 죽을 거야,” 미잉이 강한 결의로 선언했다." }
+        ];
+
+        const vocabulary = {
+            "for": "위해",
+            "miing": "미잉",
+            "life": "삶",
+            "here": "여기에서",
+            "never-ending": "끝없는",
+            "cycle": "반복",
+            "work": "일",
+            "freedom": "자유",
+            "taken": "빼앗긴",
+            "away": "멀리",
+            "eyes": "눈",
+            "blindly": "멍하니",
+            "stared": "응시했다",
+            "ahead": "앞에",
+            "hands": "손",
+            "half-heartedly": "건성으로",
+            "assembled": "조립했다",
+            "printed": "인쇄된",
+            "boards": "판",
+            "identical": "동일한",
+            "picture": "사진",
+            "layout": "레이아웃",
+            "glued": "붙여진",
+            "table": "테이블",
+            "sitting": "앉아있는",
+            "hours": "시간",
+            "allowed": "허락된",
+            "break": "휴식",
+            "toilet": "화장실",
+            "skin": "피부",
+            "sickly": "병적인",
+            "pale": "창백한",
+            "tired": "피곤한",
+            "constantly": "끊임없이",
+            "felt": "느꼈다",
+            "dark": "어두운",
+            "stormy": "폭풍우 치는",
+            "night": "밤",
+            "dinner": "저녁",
+            "happened": "우연히",
+            "chance": "기회",
+            "talk": "대화하다",
+            "young": "젊은",
+            "woman": "여성",
+            "working": "일하는",
+            "next": "옆의",
+            "table": "테이블",
+            "escape": "탈출하다",
+            "prison": "감옥",
+            "come": "오다",
+            "keeping": "고정한",
+            "eyes": "눈",
+            "plate": "접시",
+            "thinking": "생각하다",
+            "same": "같은",
+            "thing": "것",
+            "look": "보다",
+            "directly": "직접",
+            "seconds": "초",
+            "replied": "대답했다",
+            "pause": "침묵",
+            "try": "시도하다",
+            "must": "반드시",
+            "do": "하다",
+            "part": "부분",
+            "either": "둘 중 하나",
+            "die": "죽다",
+            "declared": "선언했다",
+            "strong": "강한",
+            "resolve": "결의"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

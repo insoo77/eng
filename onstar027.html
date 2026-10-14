@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-6-1) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-6-1) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "The vaquita is a small, shy dolphin that is exclusive to the tiny corner of the Sea of Cortez, in Mexico.", korean: "바키타는 멕시코 코르테즈 해의 작은 구석에만 서식하는 작고 수줍음 많은 돌고래입니다." },
+            { english: "Adult vaquitas are approximately 4–5 feet (1.2–1.5 meters) long and weigh as much as 120 pounds (55 kilograms).", korean: "성체 바키타는 약 4–5피트(1.2–1.5미터) 길이이며 최대 120파운드(55킬로그램) 무게입니다." },
+            { english: "The back is dark gray, while the underparts are lighter.", korean: "등은 짙은 회색이고, 하체는 더 밝습니다." },
+            { english: "They are called “pandas of the sea” for the black rings around their eyes.", korean: "눈 주위의 검은 고리 때문에 '바다의 판다'라고 불립니다." },
+            { english: "Since their range is so small and they have such a slow reproduction rate, the vaquita population was thought to number in the thousands when it was first discovered in the 1950s.", korean: "서식지가 너무 작고 번식 속도가 매우 느리기 때문에, 1950년대에 처음 발견되었을 때 바키타의 개체 수는 수천 마리로 추정되었습니다." },
+            { english: "By the end of the 20th century, scientists had become concerned with how quickly their numbers were decreasing.", korean: "20세기 말까지 과학자들은 그들의 수가 얼마나 빨리 감소하고 있는지에 대해 우려하기 시작했습니다." },
+            { english: "Fishermen accidentally capture vaquitas when they’re looking for totoabas with their fishing gear, and as a result, these mammals end up dying.", korean: "어부들은 어구로 토토아바를 찾다가 실수로 바키타를 잡게 되고, 그 결과 이 포유류는 죽게 됩니다." },
+            { english: "The loss of vaquita habitat is also a reason for their declining numbers.", korean: "바키타 서식지의 손실도 그들의 수가 감소하는 이유 중 하나입니다." }
+        ];
+
+        const vocabulary = {
+            "vaquita": "바키타",
+            "small": "작은",
+            "shy": "수줍은",
+            "dolphin": "돌고래",
+            "exclusive": "독점적인",
+            "tiny corner": "작은 구석",
+            "Sea of Cortez": "코르테즈 해",
+            "Mexico": "멕시코",
+            "adult": "성체",
+            "approximately": "약",
+            "4–5 feet": "4–5피트",
+            "1.2–1.5 meters": "1.2–1.5미터",
+            "weigh": "무게가 나가다",
+            "120 pounds": "120파운드",
+            "55 kilograms": "55킬로그램",
+            "back": "등",
+            "dark gray": "짙은 회색",
+            "underparts": "하체",
+            "lighter": "더 밝은",
+            "pandas of the sea": "바다의 판다",
+            "black rings": "검은 고리",
+            "around their eyes": "눈 주위",
+            "range": "서식지",
+            "slow reproduction rate": "느린 번식 속도",
+            "population": "개체 수",
+            "number in the thousands": "수천 마리",
+            "discovered": "발견되다",
+            "1950s": "1950년대",
+            "end of the 20th century": "20세기 말",
+            "scientists": "과학자들",
+            "concerned": "우려하다",
+            "decreasing": "감소하다",
+            "fishermen": "어부들",
+            "accidentally": "실수로",
+            "capture": "잡다",
+            "totoabas": "토토아바",
+            "fishing gear": "어구",
+            "mammals": "포유류",
+            "end up dying": "결국 죽다",
+            "loss": "손실",
+            "habitat": "서식지",
+            "declining numbers": "감소하는 수"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

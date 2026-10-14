@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-1-3) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-1-3) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "Dear Ruth Taylor,", korean: "친애하는 루스 테일러님," },
+            { english: "A year ago, when my husband and I eagerly signed up for the Norway trip you organized, we expected an incredible expedition through the fjords.", korean: "1년 전, 남편과 저는 당신이 조직한 노르웨이 여행에 열정적으로 등록했을 때 피오르드를 통한 놀라운 탐험을 기대했습니다." },
+            { english: "The excitement was boundless, and we couldn’t wait to embark on this trip together.", korean: "흥분은 끝이 없었고 우리는 이 여행을 함께 시작하기를 기다릴 수 없었습니다." },
+            { english: "Unfortunately, a great deal has happened since then, and it is with sadness that we now find we will not be able to go.", korean: "불행히도 그 이후로 많은 일이 일어났고 우리는 지금 이 여행을 갈 수 없다는 사실에 슬픔을 느낍니다." },
+            { english: "We are faced with unanticipated health issues and expenses that we will not be able to avoid.", korean: "우리는 예상치 못한 건강 문제와 피할 수 없는 비용에 직면하고 있습니다." },
+            { english: "The agreement with you allows us to get a full refund of our deposit at this time.", korean: "당신과의 계약은 이 시점에서 우리의 보증금을 전액 환불받을 수 있게 해줍니다." },
+            { english: "Therefore, we are requesting that you return the deposit money to us.", korean: "따라서 우리는 당신이 보증금을 우리에게 반환해 주기를 요청합니다." },
+            { english: "We’re hopeful about joining a future trip and would like to be kept informed about your upcoming travel plans.", korean: "우리는 미래의 여행에 참여할 수 있기를 희망하며 당신의 다가오는 여행 계획에 대한 정보를 받기를 원합니다." },
+            { english: "I’m looking forward to your response.", korean: "당신의 답변을 기대하고 있습니다." },
+            { english: "Sincerely,", korean: "진심으로," },
+            { english: "Dolores Rector", korean: "돌로레스 렉터" }
+        ];
+
+        const vocabulary = {
+            "dear": "친애하는",
+            "ruth": "루스",
+            "taylor": "테일러",
+            "year": "년",
+            "ago": "전에",
+            "my": "나의",
+            "husband": "남편",
+            "eagerly": "열정적으로",
+            "signed": "등록했다",
+            "up": "올라가다",
+            "norway": "노르웨이",
+            "trip": "여행",
+            "organized": "조직한",
+            "expected": "기대했다",
+            "incredible": "놀라운",
+            "expedition": "탐험",
+            "through": "통해",
+            "fjords": "피오르드",
+            "excitement": "흥분",
+            "boundless": "끝없는",
+            "couldn’t": "할 수 없었다",
+            "wait": "기다리다",
+            "embark": "시작하다",
+            "together": "함께",
+            "unfortunately": "불행히도",
+            "great": "많은",
+            "deal": "일",
+            "happened": "일어났다",
+            "since": "이후",
+            "then": "그때",
+            "sadness": "슬픔",
+            "find": "알다",
+            "will": "할 것이다",
+            "able": "할 수 있는",
+            "go": "가다",
+            "faced": "직면한",
+            "unanticipated": "예상치 못한",
+            "health": "건강",
+            "issues": "문제",
+            "expenses": "비용",
+            "avoid": "피하다",
+            "agreement": "계약",
+            "allows": "허락하다",
+            "us": "우리",
+            "get": "받다",
+            "full": "전액",
+            "refund": "환불",
+            "deposit": "보증금",
+            "time": "시점",
+            "requesting": "요청하다",
+            "return": "반환하다",
+            "money": "돈",
+            "hopeful": "희망하는",
+            "joining": "참여하다",
+            "future": "미래",
+            "kept": "유지하다",
+            "informed": "정보를 받다",
+            "upcoming": "다가오는",
+            "travel": "여행",
+            "plans": "계획",
+            "response": "답변",
+            "sincerely": "진심으로",
+            "dolores": "돌로레스",
+            "rector": "렉터"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

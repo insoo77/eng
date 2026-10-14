@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-3-4) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-3-4) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "If you have ever been involved in a disaster such as a flood, hurricane, or tornado, you know what it is like for people to pull together in ways that are highly productive.", korean: "만약 당신이 홍수, 허리케인, 또는 토네이도와 같은 재난에 연루된 적이 있다면, 사람들이 매우 생산적인 방식으로 협력하는 것이 어떤 것인지 알고 있을 것입니다." },
+            { english: "Team activities often provide similar bonds of shared fate.", korean: "팀 활동은 종종 비슷한 공동 운명의 유대를 제공합니다." },
+            { english: "Especially important is the fact that the ideal of being community-centered does not mean that everyone simply agrees with everyone else about everything.", korean: "특히 중요한 것은, 공동체 중심의 이상이 모든 사람들이 모든 것에 대해 단순히 서로 동의하는 것을 의미하지 않는다는 사실입니다." },
+            { english: "True learning communities learn from one another and know how to 'argue with grace.'", korean: "진정한 학습 공동체는 서로 배울 줄 알며 '품위 있게 논쟁하는 법'을 압니다." },
+            { english: "As people share their understandings and reasoning with one another, they teach each other in a variety of ways.", korean: "사람들이 자신의 이해와 추론을 서로 공유하면서, 그들은 다양한 방식으로 서로를 가르칩니다." },
+            { english: "Not only are ideas shared, but modes of argumentation, reasoning, and problem solving are also modeled and shared.", korean: "아이디어뿐만 아니라, 논증, 추론, 문제 해결의 방식도 모델링되고 공유됩니다." },
+            { english: "This helps others develop their thinking abilities as well as their store of knowledge.", korean: "이는 다른 사람들이 사고 능력과 지식의 축적을 개발하는 데 도움을 줍니다." },
+            { english: "In addition, the various skills and interests provided by members of a learning community offer access to distributed expertise that can be skillfully used to support the learning of all participants in the community.", korean: "게다가, 학습 공동체 구성원이 제공하는 다양한 기술과 관심사는 모든 참가자의 학습을 지원하는 데 능숙하게 사용될 수 있는 분산된 전문 지식에 접근할 수 있게 합니다." }
+        ];
+
+        const vocabulary = {
+            "if": "만약",
+            "you": "당신",
+            "have": "가지다",
+            "ever": "언젠가",
+            "been": "되었다",
+            "involved": "연루된",
+            "disaster": "재난",
+            "such": "와 같은",
+            "as": "로서",
+            "flood": "홍수",
+            "hurricane": "허리케인",
+            "tornado": "토네이도",
+            "know": "알다",
+            "what": "무엇",
+            "it": "그것",
+            "is": "이다",
+            "like": "같은",
+            "people": "사람들",
+            "pull": "끌어당기다",
+            "together": "함께",
+            "ways": "방법들",
+            "that": "그것",
+            "are": "이다",
+            "highly": "매우",
+            "productive": "생산적인",
+            "team": "팀",
+            "activities": "활동들",
+            "often": "종종",
+            "provide": "제공하다",
+            "similar": "비슷한",
+            "bonds": "유대",
+            "shared": "공유된",
+            "fate": "운명",
+            "especially": "특히",
+            "important": "중요한",
+            "fact": "사실",
+            "ideal": "이상",
+            "being": "존재",
+            "community-centered": "공동체 중심의",
+            "does": "한다",
+            "not": "아니다",
+            "mean": "의미하다",
+            "everyone": "모두",
+            "simply": "단순히",
+            "agrees": "동의하다",
+            "else": "다른",
+            "everything": "모든 것",
+            "true": "진정한",
+            "learning": "학습",
+            "communities": "공동체들",
+            "from": "로부터",
+            "one": "하나",
+            "another": "다른",
+            "how": "어떻게",
+            "argue": "논쟁하다",
+            "with": "와 함께",
+            "grace": "품위",
+            "share": "공유하다",
+            "understandings": "이해",
+            "reasoning": "추론",
+            "teach": "가르치다",
+            "each": "각각",
+            "other": "다른",
+            "variety": "다양성",
+            "ways": "방법들",
+            "not": "아니다",
+            "only": "단지",
+            "ideas": "아이디어들",
+            "modes": "방식들",
+            "argumentation": "논증",
+            "problem": "문제",
+            "solving": "해결",
+            "modeled": "모델링된",
+            "helps": "돕다",
+            "develop": "발전시키다",
+            "thinking": "사고",
+            "abilities": "능력들",
+            "store": "저장소",
+            "knowledge": "지식",
+            "in": "안에",
+            "addition": "추가적으로",
+            "various": "다양한",
+            "skills": "기술",
+            "interests": "관심사들",
+            "provided": "제공된",
+            "members": "구성원들",
+            "offer": "제공하다",
+            "access": "접근",
+            "distributed": "분산된",
+            "expertise": "전문 지식",
+            "skillfully": "능숙하게",
+            "used": "사용된",
+            "support": "지원하다",
+            "all": "모든",
+            "participants": "참가자들",
+            "community": "공동체"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

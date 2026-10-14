@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-5-3) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-5-3) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "The graph above shows the average monthly price for a desk in a coworking space worldwide by region from 2020 to 2022.", korean: "위 그래프는 2020년부터 2022년까지 전 세계 지역별 코워킹 스페이스에서 책상의 월평균 가격을 보여줍니다." },
+            { english: "① For each region, the average price per month for a desk in a coworking space in 2022 was higher than it was in 2020.", korean: "① 각 지역에서 2022년 코워킹 스페이스 책상의 월평균 가격은 2020년보다 높았습니다." },
+            { english: "② Oceania had the highest average price per month for a desk in a coworking space from 2020 to 2022, and Africa had the lowest.", korean: "② 2020년부터 2022년까지 오세아니아는 코워킹 스페이스 책상의 월평균 가격이 가장 높았고, 아프리카는 가장 낮았습니다." },
+            { english: "③ In 2021, only two regions, namely Africa and South America, had average prices that were less than half the price of the most expensive region, Oceania.", korean: "③ 2021년에는 아프리카와 남아메리카 두 지역만이 가장 비싼 지역인 오세아니아 가격의 절반 이하인 평균 가격을 기록했습니다." },
+            { english: "④ In contrast, in 2020, North America and Oceania were the only two regions where the average price was more than twice as high as that of the cheapest region.", korean: "④ 반대로, 2020년에는 북아메리카와 오세아니아만이 가장 저렴한 지역의 가격보다 2배 이상 높은 평균 가격을 기록한 지역이었습니다." },
+            { english: "⑤ Oceania and Central America were the only two regions where prices continued to increase from 2020 to 2022.", korean: "⑤ 오세아니아와 중앙아메리카는 2020년부터 2022년까지 가격이 계속 상승한 유일한 두 지역이었습니다." }
+        ];
+
+        const vocabulary = {
+            "graph": "그래프",
+            "above": "위에",
+            "shows": "보여주다",
+            "average": "평균",
+            "monthly price": "월평균 가격",
+            "desk": "책상",
+            "coworking space": "코워킹 스페이스",
+            "worldwide": "전 세계적으로",
+            "region": "지역",
+            "2020": "2020년",
+            "2022": "2022년",
+            "each region": "각 지역",
+            "higher than": "~보다 높은",
+            "Oceania": "오세아니아",
+            "highest": "가장 높은",
+            "Africa": "아프리카",
+            "lowest": "가장 낮은",
+            "2021": "2021년",
+            "only": "단지",
+            "two regions": "두 지역",
+            "namely": "즉",
+            "South America": "남아메리카",
+            "less than": "~보다 적은",
+            "half the price": "가격의 절반",
+            "most expensive": "가장 비싼",
+            "North America": "북아메리카",
+            "more than twice as high": "2배 이상 높은",
+            "cheapest": "가장 저렴한",
+            "Central America": "중앙아메리카",
+            "continued to increase": "계속 증가했다"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

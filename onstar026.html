@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-6-0) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-6-0) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "Maria Goeppert Mayer was born in Kattowitz, Germany, in 1906.", korean: "마리아 괴페르트 마이어는 1906년 독일 카토비츠에서 태어났습니다." },
+            { english: "After graduating from high school, Goeppert Mayer studied theoretical physics at the University of Göttingen.", korean: "고등학교를 졸업한 후, 괴페르트 마이어는 괴팅겐 대학교에서 이론 물리학을 공부했습니다." },
+            { english: "She excelled in her studies and received her doctorate in 1930.", korean: "그녀는 학업에서 뛰어난 성과를 거두었고 1930년에 박사 학위를 받았습니다." },
+            { english: "After receiving her doctorate, Maria Goeppert Mayer married Joseph Edward Mayer and moved to the United States with him, where he had been offered a position as associate professor of chemistry at Johns Hopkins University.", korean: "박사 학위를 받은 후, 마리아 괴페르트 마이어는 조셉 에드워드 마이어와 결혼하고 그와 함께 미국으로 이주했으며, 그는 존스 홉킨스 대학교의 화학 부교수 직책을 제안받았습니다." },
+            { english: "In 1939, they moved to Columbia University in New York, where the chairman of the physics department arranged for her to have an office, but she received no salary.", korean: "1939년에 그들은 뉴욕의 컬럼비아 대학교로 이사했으며, 물리학과장이 그녀를 위해 사무실을 마련했지만, 그녀는 급여를 받지 못했습니다." },
+            { english: "In 1963, Goeppert Mayer was awarded the Nobel Prize in Physics, along with J. Hans D. Jensen, for their work on the nuclear shell model.", korean: "1963년에 괴페르트 마이어는 J. 한스 D. 옌센과 함께 핵 껍질 모델에 대한 연구로 노벨 물리학상을 수상했습니다." },
+            { english: "She was the second woman to win the Nobel Prize in Physics, after Marie Curie.", korean: "그녀는 마리 퀴리 이후 노벨 물리학상을 받은 두 번째 여성입니다." },
+            { english: "Goeppert Mayer died in San Diego in 1972.", korean: "괴페르트 마이어는 1972년 샌디에이고에서 사망했습니다." },
+            { english: "After her death, the Maria Goeppert Mayer Award was created to honor young female physicists at the beginning of their careers.", korean: "그녀의 사망 후, 마리아 괴페르트 마이어 상이 경력 초기의 젊은 여성 물리학자들을 기리기 위해 제정되었습니다." }
+        ];
+
+        const vocabulary = {
+            "Maria Goeppert Mayer": "마리아 괴페르트 마이어",
+            "born": "태어나다",
+            "Kattowitz": "카토비츠",
+            "Germany": "독일",
+            "1906": "1906년",
+            "graduating": "졸업하다",
+            "high school": "고등학교",
+            "studied": "공부했다",
+            "theoretical physics": "이론 물리학",
+            "University of Göttingen": "괴팅겐 대학교",
+            "excelled": "뛰어나다",
+            "studies": "학업",
+            "received": "받았다",
+            "doctorate": "박사 학위",
+            "1930": "1930년",
+            "married": "결혼했다",
+            "Joseph Edward Mayer": "조셉 에드워드 마이어",
+            "moved": "이주했다",
+            "United States": "미국",
+            "position": "직책",
+            "associate professor": "부교수",
+            "chemistry": "화학",
+            "Johns Hopkins University": "존스 홉킨스 대학교",
+            "1939": "1939년",
+            "Columbia University": "컬럼비아 대학교",
+            "New York": "뉴욕",
+            "chairman": "과장",
+            "physics department": "물리학과",
+            "arranged": "마련했다",
+            "office": "사무실",
+            "salary": "급여",
+            "1963": "1963년",
+            "Nobel Prize in Physics": "노벨 물리학상",
+            "J. Hans D. Jensen": "J. 한스 D. 옌센",
+            "nuclear shell model": "핵 껍질 모델",
+            "second woman": "두 번째 여성",
+            "Marie Curie": "마리 퀴리",
+            "died": "사망했다",
+            "San Diego": "샌디에이고",
+            "1972": "1972년",
+            "Maria Goeppert Mayer Award": "마리아 괴페르트 마이어 상",
+            "honor": "기리다",
+            "young female physicists": "젊은 여성 물리학자들",
+            "beginning of their careers": "경력 초기"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

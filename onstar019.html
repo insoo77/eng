@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-4-3) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-4-3) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "Even though the world is now driven by technology, the authenticity of the experience remains a must in the tourism and hospitality industry.", korean: "비록 세계가 이제 기술에 의해 움직이고 있지만, 관광 및 접객 산업에서 경험의 진정성은 여전히 필수 요소입니다." },
+            { english: "One of the essential elements that contribute to the creation of a memorable and authentic experience remains the communication; addressing a guest in their mother tongue might be a differentiator on the present complex market.", korean: "기억에 남고 진정성 있는 경험을 창출하는 데 기여하는 필수 요소 중 하나는 소통입니다. 손님에게 모국어로 말하는 것은 현재의 복잡한 시장에서 차별화 요소가 될 수 있습니다." },
+            { english: "Therefore, foreign language skills are essential within the tourism and hospitality industry.", korean: "따라서 외국어 능력은 관광 및 접객 산업에서 필수적입니다." },
+            { english: "Foreign language skills bring about opportunities on the labor market and increase the likelihood of becoming a manager in the tourism sector.", korean: "외국어 능력은 노동 시장에서 기회를 제공하고 관광 분야에서 관리자가 될 가능성을 높여줍니다." },
+            { english: "English is a must.", korean: "영어는 필수입니다." },
+            { english: "Knowing a second foreign language may act as a differentiator on the labor market from the standpoint of the employee.", korean: "두 번째 외국어를 아는 것은 직원의 관점에서 노동 시장에서 차별화 요소로 작용할 수 있습니다." },
+            { english: "It helps professionals not only improve their career, but also experience new things, deepen their relationships, and accumulate more relevant information in their professional and personal lives.", korean: "이는 전문가들이 경력을 향상시키는 것뿐만 아니라 새로운 것을 경험하고, 관계를 심화시키며, 직업적 및 개인적 삶에서 더 관련성 있는 정보를 축적하도록 돕습니다." }
+        ];
+
+        const vocabulary = {
+            "even though": "비록 ~일지라도",
+            "world": "세계",
+            "now": "이제",
+            "driven": "움직이는",
+            "technology": "기술",
+            "authenticity": "진정성",
+            "experience": "경험",
+            "remains": "여전히",
+            "must": "필수",
+            "tourism": "관광",
+            "hospitality": "접객",
+            "industry": "산업",
+            "essential": "필수적인",
+            "elements": "요소들",
+            "contribute": "기여하다",
+            "creation": "창출",
+            "memorable": "기억에 남는",
+            "communication": "소통",
+            "addressing": "말을 건네다",
+            "guest": "손님",
+            "mother tongue": "모국어",
+            "might": "할지도 모른다",
+            "differentiator": "차별화 요소",
+            "present": "현재의",
+            "complex": "복잡한",
+            "market": "시장",
+            "therefore": "따라서",
+            "foreign": "외국의",
+            "language": "언어",
+            "skills": "능력",
+            "bring about": "가져오다",
+            "opportunities": "기회들",
+            "labor market": "노동 시장",
+            "increase": "증가시키다",
+            "likelihood": "가능성",
+            "becoming": "되는 것",
+            "manager": "관리자",
+            "sector": "분야",
+            "english": "영어",
+            "second": "두 번째",
+            "standpoint": "관점",
+            "employee": "직원",
+            "helps": "돕다",
+            "professionals": "전문가들",
+            "improve": "향상시키다",
+            "career": "경력",
+            "experience": "경험하다",
+            "new": "새로운",
+            "things": "것들",
+            "deepen": "심화시키다",
+            "relationships": "관계들",
+            "accumulate": "축적하다",
+            "relevant": "관련성 있는",
+            "information": "정보",
+            "professional": "직업적인",
+            "personal": "개인적인",
+            "lives": "삶"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

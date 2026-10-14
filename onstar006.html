@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-2-0) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-2-0) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "The moment you acknowledge yourself as the one being responsible for your success, your life will change.", korean: "당신이 자신의 성공에 책임이 있는 사람으로서 자신을 인정하는 순간, 당신의 삶은 변화할 것입니다." },
+            { english: "With this new assumed responsibility you will throw away the need for excuses and blaming.", korean: "이 새로운 책임을 맡음으로써 당신은 변명과 비난의 필요성을 버리게 될 것입니다." },
+            { english: "You will bear the burden of your own choices without ever again pointing to someone or something else as the reason for not succeeding, for failing to accomplish the things you wanted.", korean: "당신은 원하는 것을 이루지 못한 이유로 다른 사람이나 다른 것을 지목하지 않고, 자신의 선택에 대한 부담을 짊어질 것입니다." },
+            { english: "It’s breaking free from that old pattern picked up as kids when somebody else was always controlling what you were doing: parents, teachers, coaches, generally speaking, grown-ups who messed things up.", korean: "이는 누군가가 항상 당신이 하는 일을 통제하던 아이 때부터 습득한 오래된 패턴에서 벗어나는 것입니다: 부모, 선생님, 코치, 일반적으로 말해 일을 망치는 어른들." },
+            { english: "Wasn’t this one of the most used phrases at that age: “But it’s not my fault. X said/made me to do this and that”?", korean: "그 나이에 가장 많이 사용된 구절 중 하나가 이것이 아니었나요: “하지만 제 잘못이 아니에요. X가 이것저것 하라고 했어요”?" },
+            { english: "Well, this sort of placing the blame externally, outside ourselves—as adults, we may find a wild variation here: society, partners, friends, parents, destiny, etc.—must be abandoned completely in order to have the strength to recover from eventual failure and keep ourselves going.", korean: "음, 이런 식으로 우리 자신 밖에, 외부에 책임을 돌리는 것은—성인이 되어서도 여기서 다양한 변형을 찾을 수 있습니다: 사회, 파트너, 친구, 부모, 운명 등—궁극적인 실패로부터 회복하고 계속 나아갈 수 있는 힘을 얻기 위해 완전히 버려져야 합니다." }
+        ];
+
+        const vocabulary = {
+            "the": "그",
+            "moment": "순간",
+            "you": "당신",
+            "acknowledge": "인정하다",
+            "yourself": "자신",
+            "as": "로서",
+            "one": "하나",
+            "being": "존재",
+            "responsible": "책임 있는",
+            "for": "위해",
+            "your": "당신의",
+            "success": "성공",
+            "life": "삶",
+            "will": "할 것이다",
+            "change": "변화하다",
+            "with": "함께",
+            "this": "이",
+            "new": "새로운",
+            "assumed": "맡은",
+            "responsibility": "책임",
+            "throw": "버리다",
+            "away": "멀리",
+            "need": "필요",
+            "excuses": "변명",
+            "and": "그리고",
+            "blaming": "비난",
+            "bear": "견디다",
+            "burden": "부담",
+            "of": "의",
+            "own": "자신의",
+            "choices": "선택",
+            "without": "없이",
+            "ever": "다시",
+            "again": "또한",
+            "pointing": "지목하다",
+            "to": "에게",
+            "someone": "누군가",
+            "or": "또는",
+            "something": "무언가",
+            "else": "다른",
+            "reason": "이유",
+            "not": "않다",
+            "succeeding": "성공하다",
+            "failing": "실패하다",
+            "accomplish": "이루다",
+            "things": "것들",
+            "wanted": "원했다",
+            "it's": "그것은",
+            "breaking": "벗어나다",
+            "free": "자유로운",
+            "from": "로부터",
+            "that": "그",
+            "old": "오래된",
+            "pattern": "패턴",
+            "picked": "습득한",
+            "up": "올라",
+            "kids": "아이들",
+            "when": "때",
+            "somebody": "누군가",
+            "else": "다른 사람",
+            "was": "이었다",
+            "always": "항상",
+            "controlling": "통제하다",
+            "what": "무엇",
+            "were": "였다",
+            "doing": "하는",
+            "parents": "부모",
+            "teachers": "선생님",
+            "coaches": "코치",
+            "generally": "일반적으로",
+            "speaking": "말해서",
+            "grown-ups": "어른들",
+            "who": "누구",
+            "messed": "망치다",
+            "things": "일들",
+            "up": "위로",
+            "wasn't": "아니었다",
+            "this": "이것",
+            "most": "가장",
+            "used": "사용된",
+            "phrases": "구절",
+            "at": "~에서",
+            "age": "나이",
+            "but": "하지만",
+            "my": "나의",
+            "fault": "잘못",
+            "said": "말했다",
+            "made": "만들었다",
+            "me": "나를",
+            "do": "하다",
+            "well": "음",
+            "sort": "종류",
+            "placing": "놓다",
+            "blame": "비난",
+            "externally": "외부에",
+            "outside": "밖에",
+            "ourselves": "우리 자신",
+            "adults": "성인",
+            "may": "할 수 있다",
+            "find": "찾다",
+            "wild": "다양한",
+            "variation": "변형",
+            "here": "여기",
+            "society": "사회",
+            "partners": "파트너",
+            "friends": "친구",
+            "destiny": "운명",
+            "etc": "등",
+            "must": "반드시",
+            "be": "되다",
+            "abandoned": "버려지다",
+            "completely": "완전히",
+            "in": "안에",
+            "order": "위해",
+            "have": "갖다",
+            "strength": "힘",
+            "recover": "회복하다",
+            "eventual": "궁극적인",
+            "failure": "실패",
+            "keep": "유지하다",
+            "going": "계속하다"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

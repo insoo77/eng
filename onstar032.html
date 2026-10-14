@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-7-1) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-7-1) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "Read to a Dog at Farnell Library", korean: "파넬 도서관에서 강아지에게 책 읽어주기" },
+            { english: "When: 4:00 – 5:00 p.m., every first Wednesday and third Tuesday of the month", korean: "언제: 매월 첫 번째 수요일과 세 번째 화요일 오후 4시에서 5시" },
+            { english: "Where: Farnell Library", korean: "어디서: 파넬 도서관" },
+            { english: "Calling all parents of young readers aged 8 and older!", korean: "8세 이상 어린 독자의 부모님을 초대합니다!" },
+            { english: "Give your child a chance to improve their reading skills by reading aloud to some furry friends!", korean: "털복숭이 친구들에게 큰 소리로 책을 읽어줌으로써 자녀가 읽기 실력을 향상시킬 기회를 주세요!" },
+            { english: "Volunteers from Therapy Dogs International will bring dogs to the library to give children the opportunity to gain confidence in their reading and improve their reading fluency.", korean: "Therapy Dogs International의 자원봉사자들이 도서관에 개를 데려와 아이들이 읽기에 자신감을 얻고 읽기 유창성을 향상시킬 기회를 제공합니다." },
+            { english: "• Children can bring their own book or choose one in the library to read to a therapy dog.", korean: "• 아이들은 자신이 가져온 책이나 도서관의 책을 선택해 치료견에게 읽어줄 수 있습니다." },
+            { english: "• Each child can read to a dog for up to 10 minutes.", korean: "• 각 아이는 최대 10분 동안 개에게 책을 읽어줄 수 있습니다." },
+            { english: "• Pre-registration is not required, but there may be a wait for an available dog.", korean: "• 사전 등록은 필요하지 않지만, 이용 가능한 개를 기다려야 할 수 있습니다." }
+        ];
+
+        const vocabulary = {
+            "Read to a Dog": "강아지에게 책 읽어주기",
+            "Farnell Library": "파넬 도서관",
+            "When": "언제",
+            "4:00 – 5:00 p.m.": "오후 4시에서 5시",
+            "every first Wednesday": "매월 첫 번째 수요일",
+            "third Tuesday": "세 번째 화요일",
+            "month": "달",
+            "Where": "어디서",
+            "Calling all parents": "모든 부모님을 초대합니다",
+            "young readers": "어린 독자들",
+            "aged 8 and older": "8세 이상",
+            "Give your child a chance": "자녀에게 기회를 주세요",
+            "improve": "향상시키다",
+            "reading skills": "읽기 실력",
+            "reading aloud": "큰 소리로 읽기",
+            "furry friends": "털복숭이 친구들",
+            "Volunteers": "자원봉사자들",
+            "Therapy Dogs International": "Therapy Dogs International",
+            "bring": "데려오다",
+            "opportunity": "기회",
+            "gain confidence": "자신감을 얻다",
+            "reading fluency": "읽기 유창성",
+            "Children": "아이들",
+            "bring their own book": "자신의 책을 가져오다",
+            "choose": "선택하다",
+            "library": "도서관",
+            "therapy dog": "치료견",
+            "Each child": "각 아이",
+            "up to 10 minutes": "최대 10분",
+            "Pre-registration": "사전 등록",
+            "not required": "필요하지 않다",
+            "may be a wait": "기다려야 할 수 있다",
+            "available dog": "이용 가능한 개"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

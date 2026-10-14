@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-1-0) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-1-0) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "To Whom It May Concern:", korean: "관계자분께:" },
+            { english: "I’m inquiring again about the item delivered to my door last Monday morning.", korean: "저는 지난 월요일 아침에 제 문 앞에 배달된 물건에 대해 다시 문의드립니다." },
+            { english: "As I mentioned in my previous communication with your shopping mall staff, I did not order this item.", korean: "귀하의 쇼핑몰 직원과의 이전 소통에서 언급했듯이, 저는 이 물건을 주문하지 않았습니다." },
+            { english: "It is a case of mistaken delivery, as the package intended for a different address was delivered to my house instead.", korean: "이것은 잘못된 배달 사례로, 다른 주소로 보내져야 할 소포가 대신 제 집으로 배달되었습니다." },
+            { english: "I promptly notified your customer service center of this issue and provided a picture of the box along with my home address, requesting immediate collection of the item.", korean: "저는 즉시 귀하의 고객 서비스 센터에 이 문제를 알리고, 제 집 주소와 함께 상자의 사진을 제공하며 물품의 즉각적인 수거를 요청했습니다." },
+            { english: "Regrettably, the box remains in front of my door three days later despite my prior notification.", korean: "유감스럽게도, 사전 알림에도 불구하고 상자는 3일 후 여전히 제 문 앞에 있습니다." },
+            { english: "Please take prompt action to collect the item as soon as possible.", korean: "가능한 한 빨리 물품을 수거하기 위한 신속한 조치를 취해주시기 바랍니다." },
+            { english: "Sincerely,", korean: "진심으로," },
+            { english: "Jeremy White", korean: "제레미 화이트" }
+        ];
+
+        const vocabulary = {
+            "to": "에게",
+            "whom": "누구에게",
+            "it": "그것",
+            "may": "할지도 모른다",
+            "concern": "관심사",
+            "i’m": "나는",
+            "inquiring": "문의하다",
+            "again": "다시",
+            "about": "대해",
+            "item": "물건",
+            "delivered": "배달된",
+            "door": "문",
+            "last": "지난",
+            "monday": "월요일",
+            "morning": "아침",
+            "as": "처럼",
+            "mentioned": "언급한",
+            "in": "안에",
+            "previous": "이전",
+            "communication": "소통",
+            "with": "와 함께",
+            "your": "당신의",
+            "shopping": "쇼핑",
+            "mall": "몰",
+            "staff": "직원",
+            "did": "했다",
+            "not": "아니다",
+            "order": "주문",
+            "this": "이것",
+            "case": "사례",
+            "of": "의",
+            "mistaken": "잘못된",
+            "delivery": "배달",
+            "package": "소포",
+            "address": "주소",
+            "was": "이었다",
+            "house": "집",
+            "instead": "대신",
+            "promptly": "즉시",
+            "notified": "알렸다",
+            "customer": "고객",
+            "service": "서비스",
+            "center": "센터",
+            "issue": "문제",
+            "provided": "제공했다",
+            "picture": "사진",
+            "box": "상자",
+            "along": "함께",
+            "home": "집",
+            "requesting": "요청하는",
+            "immediate": "즉각적인",
+            "collection": "수거",
+            "regrettably": "유감스럽게도",
+            "remains": "남아있다",
+            "front": "앞",
+            "three": "3",
+            "days": "일",
+            "later": "후에",
+            "despite": "에도 불구하고",
+            "prior": "이전",
+            "notification": "알림",
+            "please": "제발",
+            "take": "취하다",
+            "prompt": "신속한",
+            "action": "행동",
+            "collect": "수거하다",
+            "possible": "가능한",
+            "sincerely": "진심으로",
+            "jeremy": "제레미",
+            "white": "화이트"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000; // 단어당 1초 계산
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = ""; // 문장 학습 종료 시 화면 지우기
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = ""; // 단어 학습 종료 시 화면 지우기
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000); // 단어 표시 시간 2초
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

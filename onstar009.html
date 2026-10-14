@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-2-3) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-2-3) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "As with any learning task, it is of course essential that collaborative learning activities are designed with the intended learning outcomes of the session and course in mind.", korean: "어떤 학습 과제와 마찬가지로, 협력 학습 활동은 세션과 과정의 의도된 학습 결과를 염두에 두고 설계되는 것이 필수적입니다." },
+            { english: "This may seem obvious when stated bluntly like this, but it is surprisingly easy to forget and worth repeating.", korean: "이렇게 직설적으로 말하면 분명해 보일 수 있지만 놀랍게도 쉽게 잊혀질 수 있어 반복할 가치가 있습니다." },
+            { english: "While arguments in favor of active learning teaching strategies in general, and collaborative learning in particular, tend to glorify the virtues of these strategies with regard to fostering higher order cognition, it is worth keeping in mind that higher order thinking depends on foundational knowledge.", korean: "일반적으로 적극적 학습 교수 전략, 특히 협력 학습을 지지하는 주장은 고차원적인 인지를 촉진하는 데 있어 이러한 전략의 장점을 찬미하는 경향이 있지만, 고차원적 사고는 기초 지식에 의존한다는 점을 명심할 가치가 있습니다." },
+            { english: "Hence, we would advocate occasionally making room for and designing activities that specifically target understanding, remembering, and simple application of key concepts, rather than always going straight for the most complex and demanding creative synthesis.", korean: "따라서 우리는 항상 가장 복잡하고 까다로운 창의적 종합으로 바로 나아가는 것보다 이해, 기억, 주요 개념의 간단한 적용을 목표로 하는 활동을 위한 여지를 마련하고 이를 설계할 것을 때때로 권장합니다." },
+            { english: "Aiming too high without a solid foundation risks confusion and frustration, and minimal learning gains.", korean: "탄탄한 기초 없이 너무 높은 목표를 세우면 혼란과 좌절을 초래할 위험이 있으며 학습 성과가 최소화됩니다." },
+            { english: "As an added benefit, an easy warmup task or two allows a chance for even the weaker students to experience some success, and such activities may thus be considered competence supporting, in the self-determination sense.", korean: "추가적인 이점으로, 쉬운 워밍업 과제 한두 개는 약한 학생들에게도 성공을 경험할 기회를 제공하며, 이러한 활동은 자율성의 관점에서 능력을 지원하는 것으로 간주될 수 있습니다." }
+        ];
+
+        const vocabulary = {
+            "as": "로서",
+            "with": "함께",
+            "any": "어떤",
+            "learning": "학습",
+            "task": "과제",
+            "it": "그것",
+            "is": "이다",
+            "of": "의",
+            "course": "물론",
+            "essential": "필수적인",
+            "that": "그",
+            "collaborative": "협력적인",
+            "activities": "활동들",
+            "are": "이다",
+            "designed": "설계된",
+            "intended": "의도된",
+            "outcomes": "결과",
+            "session": "세션",
+            "course": "과정",
+            "in": "안에",
+            "mind": "염두에 두다",
+            "this": "이것",
+            "may": "할지도 모른다",
+            "seem": "보이다",
+            "obvious": "분명한",
+            "stated": "말한",
+            "bluntly": "직설적으로",
+            "but": "하지만",
+            "surprisingly": "놀랍게도",
+            "easy": "쉬운",
+            "forget": "잊다",
+            "worth": "가치 있는",
+            "repeating": "반복",
+            "arguments": "주장들",
+            "favor": "찬성하다",
+            "active": "적극적인",
+            "teaching": "교수",
+            "strategies": "전략들",
+            "general": "일반적인",
+            "particular": "특히",
+            "tend": "경향이 있다",
+            "glorify": "찬미하다",
+            "virtues": "장점들",
+            "regard": "관하여",
+            "fostering": "촉진",
+            "higher": "고차원적인",
+            "order": "순서",
+            "cognition": "인지",
+            "keeping": "유지하다",
+            "depends": "의존하다",
+            "foundational": "기초적인",
+            "knowledge": "지식",
+            "hence": "따라서",
+            "advocate": "권장하다",
+            "occasionally": "때때로",
+            "making": "만들기",
+            "room": "여지",
+            "designing": "설계",
+            "activities": "활동들",
+            "specifically": "특히",
+            "target": "목표로 하다",
+            "understanding": "이해",
+            "remembering": "기억",
+            "simple": "간단한",
+            "application": "적용",
+            "key": "주요한",
+            "concepts": "개념들",
+            "rather": "대신",
+            "always": "항상",
+            "straight": "바로",
+            "complex": "복잡한",
+            "demanding": "까다로운",
+            "creative": "창의적인",
+            "synthesis": "종합",
+            "aiming": "목표로 하다",
+            "too": "너무",
+            "high": "높은",
+            "solid": "탄탄한",
+            "foundation": "기초",
+            "risks": "위험",
+            "confusion": "혼란",
+            "frustration": "좌절",
+            "minimal": "최소한의",
+            "gains": "성과",
+            "added": "추가된",
+            "benefit": "이점",
+            "warmup": "워밍업",
+            "task": "과제",
+            "allows": "허락하다",
+            "chance": "기회",
+            "even": "심지어",
+            "weaker": "약한",
+            "students": "학생들",
+            "experience": "경험하다",
+            "some": "약간의",
+            "success": "성공",
+            "such": "그러한",
+            "considered": "간주되다",
+            "competence": "능력",
+            "supporting": "지원하다",
+            "self-determination": "자율성"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

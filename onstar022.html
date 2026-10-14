@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-5-1) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-5-1) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "The graph above shows the share of payment methods used by respondents in four countries over a 12-month period, from April 2022 to March 2023.", korean: "위 그래프는 2022년 4월부터 2023년 3월까지 12개월 동안 4개국 응답자들이 사용한 결제 방식의 비율을 보여줍니다." },
+            { english: "① Among the four payment methods, using checks was the least popular method, registering below 20 percent in every country.", korean: "① 4가지 결제 방식 중 수표 사용이 가장 인기가 없었으며, 모든 국가에서 20% 미만을 기록했습니다." },
+            { english: "② In Germany, approximately 70 percent of respondents reported using cash for payments in the 12-month period, whereas less than 20 percent of respondents said they paid through mobile devices.", korean: "② 독일에서는 약 70%의 응답자가 12개월 동안 현금을 결제 수단으로 사용했다고 보고한 반면, 20% 미만의 응답자가 모바일 기기를 통해 결제했다고 말했습니다." },
+            { english: "③ In India, each of the payment methods, with the exception of checks, was used by about 60 percent of respondents.", korean: "③ 인도에서는 수표를 제외한 모든 결제 방식이 약 60%의 응답자에 의해 사용되었습니다." },
+            { english: "④ In the United States, using credit or debit cards was the most common way to pay, and it was approximately three times more common than using mobile devices.", korean: "④ 미국에서는 신용카드 또는 직불카드 사용이 가장 일반적인 결제 방법이었으며, 모바일 기기를 사용하는 것보다 약 3배 더 일반적이었습니다." },
+            { english: "⑤ Among the listed countries, China had the highest percentage of respondents using mobile devices for making payments, which was more than twice as common as that of respondents using cash in China.", korean: "⑤ 나열된 국가 중 중국은 결제를 위해 모바일 기기를 사용하는 응답자의 비율이 가장 높았으며, 이는 중국에서 현금을 사용하는 응답자의 비율보다 2배 이상 더 흔했습니다." }
+        ];
+
+        const vocabulary = {
+            "graph": "그래프",
+            "above": "위에",
+            "shows": "보여주다",
+            "share": "비율",
+            "payment methods": "결제 방식",
+            "used": "사용된",
+            "respondents": "응답자들",
+            "four countries": "4개국",
+            "12-month period": "12개월 기간",
+            "April 2022": "2022년 4월",
+            "March 2023": "2023년 3월",
+            "among": "~ 중에서",
+            "checks": "수표",
+            "least popular": "가장 인기가 없는",
+            "method": "방법",
+            "registering": "기록하다",
+            "below": "~ 이하",
+            "percent": "퍼센트",
+            "every country": "모든 국가",
+            "Germany": "독일",
+            "approximately": "약",
+            "70 percent": "70 퍼센트",
+            "reported": "보고했다",
+            "cash": "현금",
+            "payments": "결제",
+            "whereas": "~인 반면",
+            "less than": "~보다 적은",
+            "mobile devices": "모바일 기기",
+            "India": "인도",
+            "each of": "~ 각각",
+            "exception": "예외",
+            "United States": "미국",
+            "credit cards": "신용카드",
+            "debit cards": "직불카드",
+            "most common": "가장 일반적인",
+            "way to pay": "결제 방법",
+            "three times": "3배",
+            "common": "일반적인",
+            "listed countries": "나열된 국가들",
+            "China": "중국",
+            "highest percentage": "가장 높은 비율",
+            "making payments": "결제하기",
+            "twice": "두 배",
+            "common as": "~만큼 흔한"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

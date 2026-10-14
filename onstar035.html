@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-7-4) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-7-4) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "Rest-N-Go Suitcase", korean: "Rest-N-Go 여행 가방" },
+            { english: "The Rest-N-Go is an innovative suitcase that provides two easy-to-use modes when traveling with a child: Ride Mode and Sleep Mode.", korean: "Rest-N-Go는 아이와 함께 여행할 때 사용할 수 있는 두 가지 간편한 모드를 제공하는 혁신적인 여행 가방입니다: Ride 모드와 Sleep 모드." },
+            { english: "Ride Mode", korean: "Ride 모드" },
+            { english: "• For small children, it can be tiring to walk through an airport.", korean: "• 어린 아이들에게는 공항을 걷는 것이 피곤할 수 있습니다." },
+            { english: "• With the Rest-N-Go suitcase, your child can safely sit and hold on while you push the suitcase.", korean: "• Rest-N-Go 여행 가방을 사용하면 아이가 안전하게 앉아 가방을 밀면서 손잡이를 잡을 수 있습니다." },
+            { english: "• Ride Mode is suitable for children up to 35 kg.", korean: "• Ride 모드는 최대 35kg의 아이들에게 적합합니다." },
+            { english: "Sleep Mode", korean: "Sleep 모드" },
+            { english: "• The Rest-N-Go suitcase transforms standard economy seats into first class seats in two simple steps:", korean: "• Rest-N-Go 여행 가방은 두 가지 간단한 단계로 일반 이코노미 좌석을 퍼스트 클래스 좌석으로 변환합니다:" },
+            { english: "Step 1 Lift the top lid.", korean: "1단계: 윗뚜껑을 올립니다." },
+            { english: "Step 2 Unfold the mattress inside.", korean: "2단계: 내부 매트리스를 펼칩니다." },
+            { english: "• Sleep Mode must not be used during takeoff or landing.", korean: "• Sleep 모드는 이륙 또는 착륙 시 사용하면 안 됩니다." },
+            { english: "The Rest-N-Go has been officially approved by over 50 airlines and comes with a two-year limited warranty, from the date of purchase.", korean: "Rest-N-Go는 50개 이상의 항공사에서 공식적으로 승인되었으며 구매일로부터 2년 제한 보증이 제공됩니다." }
+        ];
+
+        const vocabulary = {
+            "Rest-N-Go Suitcase": "Rest-N-Go 여행 가방",
+            "innovative": "혁신적인",
+            "suitcase": "여행 가방",
+            "easy-to-use": "사용하기 쉬운",
+            "modes": "모드",
+            "traveling with a child": "아이와 함께 여행하다",
+            "Ride Mode": "Ride 모드",
+            "Sleep Mode": "Sleep 모드",
+            "small children": "어린 아이들",
+            "tiring": "피곤한",
+            "walk through an airport": "공항을 걷다",
+            "safely sit": "안전하게 앉다",
+            "hold on": "잡다",
+            "push the suitcase": "가방을 밀다",
+            "suitable for": "~에 적합한",
+            "up to 35 kg": "최대 35kg",
+            "transforms": "변환하다",
+            "standard economy seats": "일반 이코노미 좌석",
+            "first class seats": "퍼스트 클래스 좌석",
+            "simple steps": "간단한 단계",
+            "Lift the top lid": "윗뚜껑을 올리다",
+            "Unfold the mattress inside": "내부 매트리스를 펼치다",
+            "must not be used": "사용하면 안 된다",
+            "during takeoff or landing": "이륙 또는 착륙 시",
+            "officially approved": "공식적으로 승인된",
+            "over 50 airlines": "50개 이상의 항공사",
+            "two-year limited warranty": "2년 제한 보증",
+            "date of purchase": "구매일"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

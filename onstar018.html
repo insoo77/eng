@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-4-2) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-4-2) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "Teenagers’ bodies are changing, but so is the way they link their identity and self-worth to the body they live in.", korean: "십대들의 신체가 변하고 있지만, 그들이 자신들의 정체성과 자존감을 신체와 연결하는 방식도 마찬가지로 변하고 있습니다." },
+            { english: "The social pressure to look a certain way and present their identity and values through their appearance increases a notch, and social media can amplify this all even more.", korean: "특정한 외모를 갖추고 외모를 통해 자신의 정체성과 가치를 표현해야 한다는 사회적 압박은 한층 더 커지고, 소셜 미디어는 이를 더욱 증폭시킬 수 있습니다." },
+            { english: "This isn’t always a negative thing though.", korean: "하지만 이것이 항상 부정적인 것은 아닙니다." },
+            { english: "While social media can be a very public way to do the work of identity development, it can also give young people a safe space to explore their values, beliefs and the things that make them who they are.", korean: "소셜 미디어가 정체성 개발 작업을 매우 공적인 방식으로 수행할 수 있는 반면, 젊은 사람들에게 그들의 가치, 신념 및 그들을 그들답게 만드는 것들을 탐구할 수 있는 안전한 공간을 제공할 수도 있습니다." },
+            { english: "Not all teenagers want to dive headfirst into books.", korean: "모든 십대들이 책에 몰두하고 싶어하는 것은 아닙니다." },
+            { english: "This is where social media can be a powerful tool for identity exploration, giving them a place to discover new ideas and conversations to help their growth, including introducing them to the books and films that might help them learn about a subject in more detail.", korean: "이런 점에서 소셜 미디어는 정체성 탐구를 위한 강력한 도구가 될 수 있으며, 새로운 아이디어와 대화를 발견하고, 특정 주제에 대해 더 자세히 배울 수 있는 책과 영화를 소개하는 장소를 제공합니다." }
+        ];
+
+        const vocabulary = {
+            "teenagers": "십대들",
+            "bodies": "신체",
+            "changing": "변하다",
+            "link": "연결하다",
+            "identity": "정체성",
+            "self-worth": "자존감",
+            "live": "살다",
+            "social": "사회적인",
+            "pressure": "압박",
+            "look": "보이다",
+            "certain": "특정한",
+            "way": "방식",
+            "present": "표현하다",
+            "values": "가치",
+            "appearance": "외모",
+            "increases": "증가하다",
+            "notch": "단계",
+            "amplify": "증폭하다",
+            "even": "심지어",
+            "more": "더",
+            "negative": "부정적인",
+            "thing": "것",
+            "though": "하지만",
+            "public": "공적인",
+            "work": "작업",
+            "development": "개발",
+            "give": "주다",
+            "young": "젊은",
+            "people": "사람들",
+            "safe": "안전한",
+            "space": "공간",
+            "explore": "탐구하다",
+            "beliefs": "신념",
+            "things": "것들",
+            "make": "만들다",
+            "headfirst": "머리부터",
+            "books": "책들",
+            "powerful": "강력한",
+            "tool": "도구",
+            "exploration": "탐구",
+            "place": "장소",
+            "discover": "발견하다",
+            "new": "새로운",
+            "ideas": "아이디어들",
+            "conversations": "대화",
+            "growth": "성장",
+            "introducing": "소개하다",
+            "films": "영화",
+            "subject": "주제",
+            "detail": "자세히"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드를 시작할 때 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

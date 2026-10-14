@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-3-3) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-3-3) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "Since the economy is the part of the social system that is focused on providing material well-being, the performance of an economy must ultimately be judged by considering how well it achieves that purpose.", korean: "경제는 물질적 복지를 제공하는 데 초점을 맞춘 사회 시스템의 일부이기 때문에, 경제의 성과는 궁극적으로 그 목적을 얼마나 잘 달성하는지를 고려하여 평가되어야 합니다." },
+            { english: "The object of development is to improve the economic status of the whole population and the range of economic options available to them.", korean: "발전의 목적은 전체 인구의 경제적 지위를 향상시키고 그들에게 제공되는 경제적 선택의 범위를 넓히는 것입니다." },
+            { english: "A nation’s economic development therefore depends on much more than how quickly the overall size of its economy is growing.", korean: "따라서 한 국가의 경제 발전은 단순히 경제 규모가 얼마나 빠르게 성장하는지 이상의 것에 달려 있습니다." },
+            { english: "It is a complex, nuanced concept that requires attention to more than just how much is produced.", korean: "이는 단순히 얼마나 많이 생산되는지 이상의 것에 주의를 요하는 복잡하고 미묘한 개념입니다." },
+            { english: "It also depends on what is produced, how it is produced, how it is distributed, and, most importantly, the extent to which all this activity has succeeded in raising the material standard of living of the broad mass of the population.", korean: "또한 무엇이 생산되는지, 어떻게 생산되는지, 어떻게 분배되는지, 그리고 가장 중요한 것은 이러한 활동이 전체 대중의 물질적 생활 수준을 높이는 데 얼마나 성공했는지에 달려 있습니다." },
+            { english: "A rapidly expanding one-commodity economy in which 5 percent of the population owns nearly all the material wealth may be growing fast, but it is not developing.", korean: "인구의 5%가 거의 모든 물질적 부를 소유한 채로 급속히 확장하는 단일 상품 경제는 빠르게 성장할 수 있지만, 발전하고 있지는 않습니다." }
+        ];
+
+        const vocabulary = {
+            "since": "때문에",
+            "economy": "경제",
+            "is": "이다",
+            "the": "그",
+            "part": "부분",
+            "of": "의",
+            "social": "사회적인",
+            "system": "시스템",
+            "that": "그것",
+            "focused": "초점을 맞추다",
+            "on": "에",
+            "providing": "제공하다",
+            "material": "물질적인",
+            "well-being": "복지",
+            "performance": "성과",
+            "must": "반드시",
+            "ultimately": "궁극적으로",
+            "be": "되다",
+            "judged": "평가되다",
+            "by": "에 의해",
+            "considering": "고려하다",
+            "how": "어떻게",
+            "well": "잘",
+            "it": "그것",
+            "achieves": "달성하다",
+            "purpose": "목적",
+            "object": "목표",
+            "development": "발전",
+            "to": "하기 위해",
+            "improve": "향상시키다",
+            "economic": "경제적인",
+            "status": "지위",
+            "whole": "전체의",
+            "population": "인구",
+            "range": "범위",
+            "options": "선택",
+            "available": "사용 가능한",
+            "them": "그들에게",
+            "nation’s": "국가의",
+            "therefore": "따라서",
+            "depends": "달려 있다",
+            "much": "많은",
+            "more": "더",
+            "than": "보다",
+            "quickly": "빠르게",
+            "overall": "전체적인",
+            "size": "규모",
+            "its": "그것의",
+            "growing": "성장하는",
+            "complex": "복잡한",
+            "nuanced": "미묘한",
+            "concept": "개념",
+            "requires": "요구하다",
+            "attention": "주의",
+            "just": "단지",
+            "produced": "생산된",
+            "also": "또한",
+            "what": "무엇",
+            "how": "어떻게",
+            "distributed": "분배된",
+            "most": "가장",
+            "importantly": "중요하게",
+            "extent": "정도",
+            "which": "어느",
+            "activity": "활동",
+            "succeeded": "성공하다",
+            "raising": "올리다",
+            "standard": "기준",
+            "living": "생활",
+            "broad": "넓은",
+            "mass": "대중",
+            "rapidly": "빠르게",
+            "expanding": "확장하는",
+            "one-commodity": "단일 상품",
+            "owns": "소유하다",
+            "nearly": "거의",
+            "wealth": "부",
+            "may": "할 수 있다",
+            "growing": "성장하다",
+            "fast": "빠르게",
+            "not": "아니다",
+            "developing": "발전하다"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

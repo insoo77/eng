@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-6-2) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-6-2) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "Pierre Simon de Laplace was born in 1749 in France.", korean: "피에르 시몽 드 라플라스는 1749년 프랑스에서 태어났습니다." },
+            { english: "His father expected him to enter the Church and Laplace entered the University of Caen to study theology, at the age of 16, in order to meet his father’s expectation.", korean: "그의 아버지는 그가 성직자가 되기를 기대했으며, 라플라스는 아버지의 기대를 충족하기 위해 16세에 캉 대학교에 입학하여 신학을 공부했습니다." },
+            { english: "However, during his two years at the University of Caen, Laplace discovered his love and talent for mathematics.", korean: "그러나 캉 대학교에서 2년 동안 라플라스는 수학에 대한 사랑과 재능을 발견했습니다." },
+            { english: "When he was only 19, Laplace moved to Paris, without finishing his theology degree, to work with famed mathematician Jean Le Rond d’Alembert and was soon appointed as professor of mathematics at the École Militaire.", korean: "라플라스는 19세에 신학 학위를 마치지 않고 파리로 이주하여 유명한 수학자 장 르 롱 달랑베르와 함께 일했으며 곧 에콜 밀리테르의 수학 교수가 되었습니다." },
+            { english: "Laplace’s reputation steadily increased during the 1770s with his works regarding integral calculus, mechanics, and physical astronomy.", korean: "라플라스의 명성은 1770년대 동안 적분학, 역학, 물리 천문학에 관한 그의 연구로 꾸준히 상승했습니다." },
+            { english: "When he was 24, Laplace was admitted to the French Academy of Sciences due to his reputation and quality papers.", korean: "24세 때 라플라스는 그의 명성과 양질의 논문 덕분에 프랑스 과학 아카데미에 입회했습니다." },
+            { english: "He is highly regarded for his influential work in five volumes which developed a strong mathematical understanding of the motion of the heavenly bodies.", korean: "그는 천체의 운동에 대한 강력한 수학적 이해를 발전시킨 다섯 권의 영향력 있는 저작으로 높이 평가받습니다." },
+            { english: "On the morning of Monday, March 5, 1827, Laplace died.", korean: "1827년 3월 5일 월요일 아침, 라플라스는 사망했습니다." },
+            { english: "Few events would cause French Academy of Sciences to cancel a meeting, but they did on that day as a mark of respect for one of the greatest scientists.", korean: "프랑스 과학 아카데미가 회의를 취소하는 일은 거의 없었지만, 그날은 가장 위대한 과학자 중 한 명을 기리기 위해 취소했습니다." }
+        ];
+
+        const vocabulary = {
+            "Pierre Simon de Laplace": "피에르 시몽 드 라플라스",
+            "born": "태어나다",
+            "1749": "1749년",
+            "France": "프랑스",
+            "father": "아버지",
+            "expected": "기대했다",
+            "Church": "교회",
+            "entered": "입학했다",
+            "University of Caen": "캉 대학교",
+            "study": "공부하다",
+            "theology": "신학",
+            "age": "나이",
+            "16": "16세",
+            "meet": "충족하다",
+            "expectation": "기대",
+            "discovered": "발견했다",
+            "love": "사랑",
+            "talent": "재능",
+            "mathematics": "수학",
+            "19": "19세",
+            "moved": "이주했다",
+            "Paris": "파리",
+            "without finishing": "마치지 않고",
+            "theology degree": "신학 학위",
+            "famed mathematician": "유명한 수학자",
+            "Jean Le Rond d’Alembert": "장 르 롱 달랑베르",
+            "appointed": "임명되다",
+            "professor of mathematics": "수학 교수",
+            "École Militaire": "에콜 밀리테르",
+            "reputation": "명성",
+            "steadily": "꾸준히",
+            "increased": "증가했다",
+            "1770s": "1770년대",
+            "works": "연구",
+            "regarding": "~에 관하여",
+            "integral calculus": "적분학",
+            "mechanics": "역학",
+            "physical astronomy": "물리 천문학",
+            "24": "24세",
+            "admitted": "입회했다",
+            "French Academy of Sciences": "프랑스 과학 아카데미",
+            "due to": "~ 때문에",
+            "quality papers": "양질의 논문",
+            "highly regarded": "높이 평가받다",
+            "influential work": "영향력 있는 저작",
+            "five volumes": "다섯 권",
+            "developed": "발전시켰다",
+            "strong mathematical understanding": "강력한 수학적 이해",
+            "motion": "운동",
+            "heavenly bodies": "천체",
+            "March 5, 1827": "1827년 3월 5일",
+            "died": "사망했다",
+            "few events": "거의 없는 일",
+            "cancel": "취소하다",
+            "meeting": "회의",
+            "mark of respect": "경의를 표하다",
+            "greatest scientists": "가장 위대한 과학자들"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

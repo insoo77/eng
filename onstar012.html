@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-3-1) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-3-1) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "When a program is being run on a computer, math problems are being solved.", korean: "프로그램이 컴퓨터에서 실행될 때, 수학 문제가 해결되고 있습니다." },
+            { english: "If a video game or other computer program is running 'slowly,' that means the program is so complex that the computer can’t solve all the math problems fast enough for the enjoyment of the individual using the computer.", korean: "비디오 게임이나 다른 컴퓨터 프로그램이 '느리게' 실행된다면, 그것은 프로그램이 너무 복잡해서 컴퓨터가 사용자가 즐길 수 있을 만큼 빠르게 모든 수학 문제를 해결할 수 없다는 것을 의미합니다." },
+            { english: "But make no mistake; the simulation is still running, just not at an adequate pace for the individual’s preference.", korean: "하지만 오해하지 마세요; 시뮬레이션은 여전히 실행 중이며, 단지 개인의 선호에 맞는 적절한 속도로 실행되지 않을 뿐입니다." },
+            { english: "For example, suppose you’re playing a video game with high graphics settings turned on.", korean: "예를 들어, 고화질 그래픽 설정이 켜진 상태로 비디오 게임을 하고 있다고 가정해 보세요." },
+            { english: "Creating pretty graphics requires a lot of work.", korean: "아름다운 그래픽을 만드는 데는 많은 작업이 필요합니다." },
+            { english: "If you have an old computer, it may not be able to solve all the math problems quickly enough to simulate those life-like graphics at a speed that’s preferable.", korean: "오래된 컴퓨터를 가지고 있다면, 그 실감 나는 그래픽을 선호하는 속도로 시뮬레이션하기 위해 모든 수학 문제를 충분히 빠르게 해결하지 못할 수 있습니다." },
+            { english: "The result is what gamers call a 'low frame rate.'", korean: "그 결과는 게이머들이 '낮은 프레임 속도'라고 부르는 것입니다." },
+            { english: "But the game is still running of course.", korean: "하지만 게임은 여전히 실행 중입니다." },
+            { english: "You could play any video game by doing math on paper. Just not very quickly.", korean: "종이에 수학을 계산하면서 어떤 비디오 게임도 할 수 있습니다. 단지 매우 느리게 할 뿐입니다." }
+        ];
+
+        const vocabulary = {
+            "when": "때",
+            "program": "프로그램",
+            "is": "이다",
+            "being": "진행 중인",
+            "run": "실행되다",
+            "on": "위에",
+            "a": "하나의",
+            "computer": "컴퓨터",
+            "math": "수학",
+            "problems": "문제들",
+            "are": "이다",
+            "solved": "해결되다",
+            "if": "만약",
+            "video": "비디오",
+            "game": "게임",
+            "or": "또는",
+            "other": "다른",
+            "slowly": "느리게",
+            "that": "그것",
+            "means": "의미하다",
+            "so": "그래서",
+            "complex": "복잡한",
+            "can’t": "할 수 없다",
+            "solve": "해결하다",
+            "all": "모두",
+            "fast": "빠르게",
+            "enough": "충분히",
+            "for": "위한",
+            "enjoyment": "즐거움",
+            "of": "의",
+            "individual": "개인",
+            "using": "사용하다",
+            "make": "만들다",
+            "no": "없다",
+            "mistake": "오해",
+            "simulation": "시뮬레이션",
+            "still": "여전히",
+            "just": "단지",
+            "not": "아니다",
+            "at": "에서",
+            "adequate": "적절한",
+            "pace": "속도",
+            "preference": "선호",
+            "example": "예",
+            "suppose": "가정하다",
+            "you’re": "당신은",
+            "playing": "플레이하다",
+            "high": "높은",
+            "graphics": "그래픽",
+            "settings": "설정",
+            "turned": "켜지다",
+            "creating": "만들다",
+            "pretty": "아름다운",
+            "requires": "필요로 하다",
+            "lot": "많은",
+            "work": "작업",
+            "have": "가지다",
+            "old": "오래된",
+            "may": "할 수 있다",
+            "quickly": "빠르게",
+            "simulate": "시뮬레이션하다",
+            "those": "그것들",
+            "life-like": "실감 나는",
+            "speed": "속도",
+            "preferable": "선호되는",
+            "result": "결과",
+            "what": "무엇",
+            "gamers": "게이머들",
+            "call": "부르다",
+            "low": "낮은",
+            "frame": "프레임",
+            "rate": "속도",
+            "of": "의",
+            "course": "물론",
+            "could": "할 수 있다",
+            "any": "어떤",
+            "by": "에 의해",
+            "doing": "하다",
+            "paper": "종이"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

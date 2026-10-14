@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-1-1) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-1-1) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "Dear Elle Island Residents,", korean: "친애하는 엘 섬 주민 여러분," },
+            { english: "We’re excited to announce a major step forward in our efforts at the Elle Island Environmental Committee (EIEC) to protect and restore our unique coastal environments.", korean: "엘 섬 환경위원회(EIEC)의 노력으로 우리의 독특한 해안 환경을 보호하고 복원하기 위한 중요한 진전을 발표하게 되어 기쁩니다." },
+            { english: "We have recently launched our dedicated page on the Town Website!", korean: "우리는 최근에 마을 웹사이트에 전용 페이지를 개설했습니다!" },
+            { english: "On this webpage, you will find detailed information about our ongoing projects and upcoming events like Earth Day celebrations, public lectures, and presentations.", korean: "이 웹페이지에서 현재 진행 중인 프로젝트와 지구의 날 기념 행사, 공개 강의 및 발표와 같은 다가오는 행사에 대한 자세한 정보를 찾을 수 있습니다." },
+            { english: "This webpage provides an in-depth look into what we do at the EIEC and offers an opportunity for you to be involved.", korean: "이 웹페이지는 우리가 EIEC에서 수행하는 일을 심층적으로 살펴볼 수 있는 기회를 제공합니다." },
+            { english: "We encourage you to explore this new platform, learn from its content, and join us in our mission.", korean: "새로운 플랫폼을 탐색하고, 콘텐츠를 통해 배우고, 우리의 사명에 동참할 것을 권장합니다." },
+            { english: "Please discover what’s new on our page at www.elleisland.org/EIEC today!", korean: "오늘 www.elleisland.org/EIEC에서 우리의 새로운 페이지를 확인해 보세요!" },
+            { english: "We eagerly await your visit. Thank you.", korean: "여러분의 방문을 간절히 기다립니다. 감사합니다." },
+            { english: "Linda Jones", korean: "린다 존스" },
+            { english: "Chairperson of the EIEC", korean: "EIEC 의장" }
+        ];
+
+        const vocabulary = {
+            "dear": "친애하는",
+            "elle": "엘",
+            "island": "섬",
+            "residents": "주민",
+            "we’re": "우리는",
+            "excited": "기쁜",
+            "announce": "발표하다",
+            "major": "중요한",
+            "step": "단계",
+            "forward": "앞으로",
+            "efforts": "노력",
+            "committee": "위원회",
+            "protect": "보호하다",
+            "restore": "복원하다",
+            "unique": "독특한",
+            "coastal": "해안의",
+            "environments": "환경",
+            "recently": "최근에",
+            "launched": "시작했다",
+            "dedicated": "전용의",
+            "page": "페이지",
+            "town": "마을",
+            "website": "웹사이트",
+            "webpage": "웹페이지",
+            "detailed": "자세한",
+            "information": "정보",
+            "ongoing": "진행 중인",
+            "projects": "프로젝트",
+            "upcoming": "다가오는",
+            "events": "행사",
+            "earth": "지구",
+            "day": "날",
+            "celebrations": "축하",
+            "public": "공개",
+            "lectures": "강의",
+            "presentations": "발표",
+            "provides": "제공하다",
+            "depth": "깊이",
+            "look": "살펴보다",
+            "opportunity": "기회",
+            "involved": "참여하다",
+            "encourage": "권장하다",
+            "explore": "탐색하다",
+            "platform": "플랫폼",
+            "content": "내용",
+            "mission": "사명",
+            "discover": "발견하다",
+            "new": "새로운",
+            "page": "페이지",
+            "eagerly": "간절히",
+            "await": "기다리다",
+            "visit": "방문",
+            "thank": "감사하다",
+            "linda": "린다",
+            "jones": "존스",
+            "chairperson": "의장"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-2-4) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-2-4) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "We have a responsibility to the literary works we read.", korean: "우리는 우리가 읽는 문학 작품에 대한 책임이 있습니다." },
+            { english: "Our major responsibility lies in giving them and their authors their due.", korean: "우리의 주요 책임은 그것들과 그들의 작가들에게 정당한 대우를 제공하는 데 있습니다." },
+            { english: "We need to hear those books and authors out, letting them have their say.", korean: "우리는 그 책들과 작가들의 이야기를 끝까지 들어주고, 그들이 할 말을 할 수 있도록 해야 합니다." },
+            { english: "This is so whether we agree with an author’s views or not, whether a book’s ideas are difficult or accessible, regardless of who wrote it, when it was written, or why.", korean: "이것은 우리가 작가의 견해에 동의하든 동의하지 않든, 책의 아이디어가 어렵든 접근 가능하든, 누가 썼는지, 언제 쓰였는지, 또는 왜 쓰였는지에 상관없이 마찬가지입니다." },
+            { english: "We need, in short, to respect the integrity of the texts we read, not expecting something from a book that it does not intend to provide.", korean: "간단히 말해, 우리는 우리가 읽는 텍스트의 온전함을 존중해야 하며, 책이 제공하려고 하지 않는 것을 기대하지 말아야 합니다." },
+            { english: "When we read a novel, we may hope for a happy ending, but a writer is not obligated to provide one.", korean: "우리가 소설을 읽을 때, 행복한 결말을 바랄 수는 있지만, 작가가 그런 결말을 제공해야 할 의무는 없습니다." },
+            { english: "To criticize the book for lacking that happy ending offends the ethic of reading.", korean: "행복한 결말이 없다고 책을 비판하는 것은 읽기의 윤리를 위반하는 것입니다." },
+            { english: "And when we read a detective novel or a work of fantasy or science fiction, it is unjust to expect or even demand that it be realistic.", korean: "또한 우리가 탐정 소설, 판타지, 또는 공상 과학 소설을 읽을 때, 그것이 현실적일 것을 기대하거나 요구하는 것은 부당합니다." },
+            { english: "Its genre requires that it do and be something other than realistic.", korean: "그것의 장르는 그것이 현실적이지 않은 다른 무언가를 하거나 될 것을 요구합니다." }
+        ];
+
+        const vocabulary = {
+            "we": "우리는",
+            "have": "가지다",
+            "responsibility": "책임",
+            "to": "에 대한",
+            "the": "그",
+            "literary": "문학의",
+            "works": "작품",
+            "read": "읽다",
+            "our": "우리의",
+            "major": "주요한",
+            "lies": "위치하다",
+            "in": "안에",
+            "giving": "주다",
+            "them": "그것들",
+            "and": "그리고",
+            "their": "그들의",
+            "authors": "작가들",
+            "due": "정당한",
+            "need": "필요하다",
+            "hear": "듣다",
+            "those": "그것들",
+            "books": "책들",
+            "out": "끝까지",
+            "letting": "하게 하다",
+            "say": "말하다",
+            "this": "이것",
+            "is": "이다",
+            "so": "그렇다",
+            "whether": "이든 아니든",
+            "agree": "동의하다",
+            "with": "와 함께",
+            "an": "하나의",
+            "author’s": "작가의",
+            "views": "견해",
+            "or": "또는",
+            "not": "아니다",
+            "ideas": "아이디어들",
+            "are": "이다",
+            "difficult": "어려운",
+            "accessible": "접근 가능한",
+            "regardless": "상관없이",
+            "who": "누가",
+            "wrote": "썼다",
+            "it": "그것",
+            "when": "언제",
+            "was": "이었다",
+            "written": "쓰였다",
+            "why": "왜",
+            "short": "간단히",
+            "respect": "존중하다",
+            "integrity": "온전함",
+            "texts": "텍스트들",
+            "expecting": "기대하다",
+            "something": "무언가",
+            "from": "로부터",
+            "does": "한다",
+            "intend": "의도하다",
+            "provide": "제공하다",
+            "novel": "소설",
+            "may": "할지도 모른다",
+            "hope": "바라다",
+            "happy": "행복한",
+            "ending": "결말",
+            "but": "하지만",
+            "writer": "작가",
+            "obligated": "의무가 있는",
+            "criticize": "비판하다",
+            "lacking": "부족하다",
+            "offends": "위반하다",
+            "ethic": "윤리",
+            "reading": "읽기",
+            "detective": "탐정",
+            "work": "작품",
+            "fantasy": "판타지",
+            "science": "과학",
+            "fiction": "소설",
+            "unjust": "부당한",
+            "expect": "기대하다",
+            "even": "심지어",
+            "demand": "요구하다",
+            "realistic": "현실적인",
+            "genre": "장르",
+            "requires": "요구하다",
+            "do": "하다",
+            "be": "되다",
+            "other": "다른",
+            "than": "보다"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

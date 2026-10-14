@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-5-4) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-5-4) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "The table above shows the average sleep duration of children and adolescents in Australia by age and gender using data collected between 2010 and 2016.", korean: "위 표는 2010년에서 2016년 사이에 수집된 데이터를 사용하여 호주 어린이와 청소년의 연령 및 성별별 평균 수면 시간을 보여줍니다." },
+            { english: "① Both genders exhibited a decrease in sleep duration on both school nights and non-school nights as they grew older.", korean: "① 양성 모두 나이가 들수록 학교 밤과 비학교 밤 모두에서 수면 시간이 감소했습니다." },
+            { english: "② There were clear differences in sleep duration between boys and girls, with girls sleeping longer than boys, especially on non-school nights.", korean: "② 소년과 소녀 간의 수면 시간에 뚜렷한 차이가 있었으며, 특히 비학교 밤에 소녀들이 소년보다 더 오래 잤습니다." },
+            { english: "③ This pattern reversed on school nights in the age groups 10–11, 12–13, and 14–15 years, where boys got more sleep than girls.", korean: "③ 이 패턴은 10-11세, 12-13세, 14-15세 연령대의 학교 밤에 반대로 나타났으며, 이때 소년들이 소녀보다 더 많은 수면을 취했습니다." },
+            { english: "④ For both genders, children who were 6–7 and 8–9 years old got slightly less sleep on average on non-school nights compared to school nights.", korean: "④ 양성 모두 6-7세와 8-9세 어린이는 학교 밤에 비해 비학교 밤에 평균적으로 약간 적은 수면을 취했습니다." },
+            { english: "⑤ In the older age groups (14–15 and 16–17 years), adolescents got more sleep on non-school nights than on school nights.", korean: "⑤ 고령 연령대(14-15세 및 16-17세)에서는 청소년들이 학교 밤보다 비학교 밤에 더 많은 수면을 취했습니다." }
+        ];
+
+        const vocabulary = {
+            "table": "표",
+            "above": "위에",
+            "shows": "보여주다",
+            "average": "평균",
+            "sleep duration": "수면 시간",
+            "children": "어린이들",
+            "adolescents": "청소년들",
+            "Australia": "호주",
+            "age": "연령",
+            "gender": "성별",
+            "using": "~을 사용하여",
+            "data": "데이터",
+            "collected": "수집된",
+            "between": "~ 사이에",
+            "2010": "2010년",
+            "2016": "2016년",
+            "both genders": "양성",
+            "exhibited": "보여주었다",
+            "decrease": "감소",
+            "school nights": "학교 밤",
+            "non-school nights": "비학교 밤",
+            "grew older": "나이가 들다",
+            "clear differences": "뚜렷한 차이",
+            "boys": "소년들",
+            "girls": "소녀들",
+            "especially": "특히",
+            "pattern": "패턴",
+            "reversed": "반대로 나타나다",
+            "age groups": "연령대",
+            "got more sleep": "더 많은 수면을 취하다",
+            "6–7": "6-7세",
+            "8–9": "8-9세",
+            "slightly less": "약간 적은",
+            "on average": "평균적으로",
+            "compared to": "~와 비교하여",
+            "older age groups": "고령 연령대",
+            "14–15": "14-15세",
+            "16–17": "16-17세",
+            "adolescents": "청소년들",
+            "more sleep": "더 많은 수면"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

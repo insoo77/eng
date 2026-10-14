@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-5-0) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-5-0) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "The table above shows the average annual expenditure on dogs and cats in the United States as of 2020 by expense category.", korean: "위 표는 2020년 기준으로 미국에서 개와 고양이에 대한 연평균 지출을 지출 항목별로 보여줍니다." },
+            { english: "① Both dog and cat owners spent the most on food, which accounted for more than one-third of the total spending for dogs and slightly less than half of the total spending for cats.", korean: "① 개와 고양이 주인 모두 음식에 가장 많은 돈을 썼으며, 이는 개 지출의 3분의 1 이상, 고양이 지출의 절반보다 약간 적은 비중을 차지했습니다." },
+            { english: "② Vet care/vaccination ranked second highest among expenditure categories for both dogs and cats, with dog owners spending approximately twice as much as cat owners in this category.", korean: "② 개와 고양이 모두에서 수의사 치료/예방접종이 두 번째로 높은 지출 항목이었으며, 개 주인이 고양이 주인보다 약 두 배 정도 더 많이 지출했습니다." },
+            { english: "③ Grooming was the third-highest expenditure category for dog owners, while cat owners spent the third-highest amount of money on supplies (excluding food).", korean: "③ 개 주인들에게는 미용이 세 번째로 높은 지출 항목이었고, 고양이 주인들은 음식 제외 용품에 세 번째로 많은 돈을 썼습니다." },
+            { english: "④ The difference in spending on pet insurance between dog and cat owners was only ＄5 while for clothing/accessories, kenneling/day-care, and training, the differences between both types of pet owners exceeded ＄40 in each category.", korean: "④ 개와 고양이 주인 간의 애완동물 보험 지출 차이는 단지 $5였지만, 의류/악세사리, 애완동물 보관/탁아 및 훈련에서는 각 항목에서 $40 이상 차이가 났습니다." },
+            { english: "⑤ The least amount of money was spent on dog walking by dog owners, while cat owners spent the least on training.", korean: "⑤ 개 주인들은 산책에 가장 적은 돈을 썼고, 고양이 주인들은 훈련에 가장 적게 지출했습니다." }
+        ];
+
+        const vocabulary = {
+            "table": "표",
+            "above": "위에",
+            "shows": "보여주다",
+            "average": "평균",
+            "annual": "연간의",
+            "expenditure": "지출",
+            "dogs": "개들",
+            "cats": "고양이들",
+            "united states": "미국",
+            "as of": "~기준으로",
+            "expense": "지출",
+            "category": "항목",
+            "owners": "주인들",
+            "spent": "썼다",
+            "most": "가장",
+            "food": "음식",
+            "accounted for": "차지하다",
+            "more than": "~보다 많은",
+            "one-third": "3분의 1",
+            "slightly": "약간",
+            "less than": "~보다 적은",
+            "half": "절반",
+            "vet care": "수의사 치료",
+            "vaccination": "예방접종",
+            "ranked": "순위가 매겨지다",
+            "second": "두 번째",
+            "highest": "가장 높은",
+            "approximately": "대략",
+            "twice": "두 배",
+            "much": "많은",
+            "category": "항목",
+            "grooming": "미용",
+            "third-highest": "세 번째로 높은",
+            "supplies": "용품",
+            "excluding": "제외하고",
+            "pet insurance": "애완동물 보험",
+            "difference": "차이",
+            "only": "단지",
+            "＄5": "$5",
+            "clothing": "의류",
+            "accessories": "악세사리",
+            "kenneling": "애완동물 보관",
+            "day-care": "탁아",
+            "training": "훈련",
+            "exceeded": "초과하다",
+            "＄40": "$40",
+            "dog walking": "개 산책",
+            "least": "가장 적은"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-2-1) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-2-1) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div id="paragraphs">
+            <h2>Paragraph Translation</h2>
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <script>
+        const paragraphs = [
+            { english: "One of the fascinating issues of considering the ethics of AI is that, given the power of AI to augment or replace human thought and human agency, in order to assess how humans might fare in response to AI, we need to consider basic philosophical questions about human nature.", korean: "AI 윤리를 고려할 때 흥미로운 문제 중 하나는 AI가 인간의 사고와 인간의 능력을 증대하거나 대체할 수 있는 힘을 가진 상황에서, 인간이 AI에 반응하여 어떻게 될지를 평가하기 위해 인간 본성에 대한 기본적인 철학적 질문을 고려해야 한다는 점입니다." },
+            { english: "For without an understanding of human nature, including human potential, human social relations, and human responses to certain environments including the environment we are creating with AI, we cannot understand what it is for humans to live well with AI.", korean: "AI와 함께 잘 살아가기 위해 인간의 잠재력, 인간의 사회적 관계, 그리고 우리가 AI로 만드는 환경을 포함한 특정 환경에 대한 인간의 반응을 포함하여 인간 본성에 대한 이해가 없다면, 우리는 인간이 AI와 함께 잘 산다는 것이 무엇인지 이해할 수 없습니다." },
+            { english: "These questions of course involve scientific questions about human beings yet are never simply scientific questions.", korean: "이러한 질문들은 물론 인간에 대한 과학적 질문을 포함하지만, 결코 단순한 과학적 질문이 아닙니다." },
+            { english: "Even to give an account of what constitutes physical health for humans will involve making judgments of value.", korean: "인간의 신체적 건강을 구성하는 것이 무엇인지 설명하기 위해서도 가치 판단이 필요합니다." },
+            { english: "Far more so for the richer notion of human flourishing.", korean: "인간 번영이라는 더 풍부한 개념에 대해서는 훨씬 더 그렇습니다." }
+        ];
+
+        const vocabulary = {
+            "one": "하나",
+            "fascinating": "흥미로운",
+            "issues": "문제",
+            "considering": "고려하다",
+            "ethics": "윤리",
+            "ai": "인공지능",
+            "given": "주어진",
+            "power": "힘",
+            "augment": "증대하다",
+            "replace": "대체하다",
+            "human": "인간의",
+            "thought": "사고",
+            "agency": "능력",
+            "order": "위해",
+            "assess": "평가하다",
+            "how": "어떻게",
+            "might": "할지도 모른다",
+            "fare": "되다",
+            "response": "반응",
+            "need": "필요하다",
+            "basic": "기본적인",
+            "philosophical": "철학적인",
+            "questions": "질문들",
+            "nature": "본성",
+            "understanding": "이해",
+            "including": "포함하여",
+            "potential": "잠재력",
+            "social": "사회적",
+            "relations": "관계",
+            "responses": "반응들",
+            "certain": "특정한",
+            "environments": "환경",
+            "creating": "만들다",
+            "cannot": "할 수 없다",
+            "what": "무엇",
+            "live": "살다",
+            "well": "잘",
+            "with": "함께",
+            "these": "이들",
+            "scientific": "과학적인",
+            "beings": "존재",
+            "never": "결코",
+            "simply": "단순히",
+            "even": "심지어",
+            "give": "주다",
+            "account": "설명",
+            "constitutes": "구성하다",
+            "physical": "신체적",
+            "health": "건강",
+            "will": "할 것이다",
+            "involve": "포함하다",
+            "making": "만들기",
+            "judgments": "판단",
+            "value": "가치",
+            "far": "훨씬",
+            "more": "더",
+            "so": "그렇다",
+            "richer": "더 풍부한",
+            "notion": "개념",
+            "flourishing": "번영"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-5-2) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-5-2) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "The graph above shows the share of online respondents in selected countries who owned or shared a bike in 2022.", korean: "위 그래프는 2022년 선택된 국가에서 자전거를 소유하거나 공유한 온라인 응답자의 비율을 보여줍니다." },
+            { english: "① In six countries, more than 50 percent of online respondents reported owning a bike, and in only two countries, the rate of bicycle sharing exceeded 20 percent.", korean: "① 6개국에서 50% 이상의 온라인 응답자가 자전거를 소유했다고 보고했으며, 단 2개국에서만 자전거 공유율이 20%를 초과했습니다." },
+            { english: "② Poland had the highest percentage of online respondents who owned a bike, followed by the Netherlands and Brazil.", korean: "② 폴란드가 자전거를 소유한 온라인 응답자의 비율이 가장 높았으며, 그 뒤를 네덜란드와 브라질이 이었습니다." },
+            { english: "③ China showed the highest percentage of bike-sharing users and the lowest percentage of bike owners.", korean: "③ 중국은 자전거 공유 사용자 비율이 가장 높았고, 자전거 소유자 비율은 가장 낮았습니다." },
+            { english: "④ The percentage gap between owning and sharing a bike in Japan was 50 percentage points, which was higher than the percentage gap in the U.S.", korean: "④ 일본에서 자전거 소유와 공유 간의 비율 차이는 50%포인트였으며, 이는 미국의 비율 차이보다 높았습니다." },
+            { english: "⑤ Among South Korean online respondents, 43 percent reported owning a bike, more than five times higher than the percentage of those who shared a bike.", korean: "⑤ 한국 온라인 응답자 중 43%가 자전거를 소유했다고 보고했으며, 이는 자전거를 공유한 비율보다 5배 이상 높았습니다." }
+        ];
+
+        const vocabulary = {
+            "graph": "그래프",
+            "above": "위에",
+            "shows": "보여주다",
+            "share": "비율",
+            "online respondents": "온라인 응답자들",
+            "selected countries": "선택된 국가들",
+            "owned": "소유했다",
+            "shared": "공유했다",
+            "bike": "자전거",
+            "2022": "2022년",
+            "six countries": "6개국",
+            "more than": "~보다 많은",
+            "50 percent": "50 퍼센트",
+            "reported": "보고했다",
+            "owning": "소유",
+            "only": "단지",
+            "two countries": "2개국",
+            "rate": "비율",
+            "bicycle sharing": "자전거 공유",
+            "exceeded": "초과했다",
+            "Poland": "폴란드",
+            "highest percentage": "가장 높은 비율",
+            "followed by": "~가 뒤를 잇다",
+            "Netherlands": "네덜란드",
+            "Brazil": "브라질",
+            "China": "중국",
+            "bike-sharing users": "자전거 공유 사용자들",
+            "lowest percentage": "가장 낮은 비율",
+            "Japan": "일본",
+            "percentage gap": "비율 차이",
+            "owning and sharing": "소유와 공유",
+            "50 percentage points": "50%포인트",
+            "higher than": "~보다 높은",
+            "U.S.": "미국",
+            "South Korean": "한국의",
+            "43 percent": "43 퍼센트",
+            "five times higher": "5배 높은",
+            "those who": "~한 사람들"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>

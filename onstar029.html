@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전북과학고 AI영어(2025수능완성 영어영역 1-6-3) English Paragraphs and Vocabulary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .large-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .translation {
+            color: #16a085;
+        }
+        button, input[type="file"] {
+            margin: 0 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover, input[type="file"]:hover {
+            background-color: #13856e;
+        }
+        #studyMode {
+            display: none;
+            text-align: center;
+        }
+        #sentenceDisplay, #wordDisplay {
+            margin: 20px auto;
+        }
+        #sentenceDisplay, #wordDisplay {
+            font-size: 56px; /* 문장 학습과 단어 학습의 글자 크기 */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>전북과학고 AI영어(2025수능완성 영어영역 1-6-3) English Paragraphs and Vocabulary</h1>
+
+    <div id="content">
+        <div class="controls">
+            <h2>Paragraph Translation</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="stopAudio()">Stop</button>
+        </div>
+
+        <div id="paragraphs">
+            <!-- Paragraphs will be dynamically loaded here -->
+        </div>
+
+        <div id="vocabulary">
+            <h2>Vocabulary</h2>
+        </div>
+
+        <button onclick="startStudyMode()">학습모드</button>
+    </div>
+
+    <div id="studyMode">
+        <div id="sentenceDisplay"></div>
+        <div id="wordDisplay"></div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script>
+        const paragraphs = [
+            { english: "The ackee is the national fruit of Jamaica, an island-nation in the Caribbean.", korean: "아키는 카리브해 섬나라인 자메이카의 국가 과일입니다." },
+            { english: "The ackee is a tropical fruit that is originally from West Africa and was brought by slaves to the islands of the Caribbean.", korean: "아키는 서아프리카가 원산지인 열대 과일로, 노예들에 의해 카리브해 섬들로 가져왔습니다." },
+            { english: "People who like ackee know they have to boil it before eating.", korean: "아키를 좋아하는 사람들은 먹기 전에 반드시 삶아야 한다는 것을 알고 있습니다." },
+            { english: "This boiling process removes the toxic substances from the fruit.", korean: "이 삶는 과정은 과일에서 독성 물질을 제거합니다." },
+            { english: "The water used for boiling should be discarded.", korean: "삶는 데 사용된 물은 버려야 합니다." },
+            { english: "The fruit is rich in protein, vitamin A, fatty acids, and zinc.", korean: "이 과일은 단백질, 비타민 A, 지방산, 아연이 풍부합니다." },
+            { english: "When the ackee ripens, it turns from green to a bright red and splits open to reveal three large black seeds, each surrounded by soft yellow flesh.", korean: "아키가 익으면 녹색에서 밝은 빨간색으로 변하며 갈라져서 세 개의 큰 검은 씨를 드러냅니다. 각 씨는 부드러운 노란 과육으로 둘러싸여 있습니다." },
+            { english: "The fruit typically weighs 100–200 grams.", korean: "이 과일은 보통 100–200그램의 무게입니다." },
+            { english: "The tree can produce fruit throughout the year, although January–March and October–November are typically abundant periods of fruit production.", korean: "이 나무는 1년 내내 과일을 생산할 수 있지만, 보통 1월에서 3월, 10월에서 11월이 과일 생산이 풍부한 시기입니다." },
+            { english: "In Caribbean cooking, ackee is cooked with codfish and vegetables, or is added to stew, curry, soup or rice with seasonings.", korean: "카리브 요리에서는 아키를 대구와 채소와 함께 조리하거나, 스튜, 카레, 수프 또는 쌀에 양념과 함께 추가합니다." }
+        ];
+
+        const vocabulary = {
+            "ackee": "아키",
+            "national fruit": "국가 과일",
+            "Jamaica": "자메이카",
+            "island-nation": "섬나라",
+            "Caribbean": "카리브해",
+            "tropical fruit": "열대 과일",
+            "originally": "원래",
+            "West Africa": "서아프리카",
+            "brought": "가져왔다",
+            "slaves": "노예들",
+            "islands": "섬들",
+            "boil": "삶다",
+            "before eating": "먹기 전에",
+            "boiling process": "삶는 과정",
+            "removes": "제거하다",
+            "toxic substances": "독성 물질",
+            "discarded": "버려지다",
+            "protein": "단백질",
+            "vitamin A": "비타민 A",
+            "fatty acids": "지방산",
+            "zinc": "아연",
+            "ripens": "익다",
+            "turns from green to bright red": "녹색에서 밝은 빨간색으로 변하다",
+            "splits open": "갈라지다",
+            "reveal": "드러내다",
+            "seeds": "씨",
+            "soft yellow flesh": "부드러운 노란 과육",
+            "weighs": "무게가 나가다",
+            "100–200 grams": "100–200그램",
+            "tree": "나무",
+            "produce fruit": "과일을 생산하다",
+            "throughout the year": "1년 내내",
+            "abundant periods": "풍부한 시기",
+            "fruit production": "과일 생산",
+            "Caribbean cooking": "카리브 요리",
+            "codfish": "대구",
+            "vegetables": "채소",
+            "stew": "스튜",
+            "curry": "카레",
+            "soup": "수프",
+            "rice": "쌀",
+            "seasonings": "양념"
+        };
+
+        let sentenceIndex = 0;
+        let wordIndex = 0;
+        let isRunning = true;
+
+        function startStudyMode() {
+            stopAudio(); // 학습모드 시작 시 MP3 재생 정지
+            document.getElementById("content").style.display = "none";
+            const studyMode = document.getElementById("studyMode");
+            studyMode.style.display = "block";
+
+            isRunning = true;
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    isRunning = false;
+                    document.getElementById("studyMode").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    sentenceIndex = 0;
+                    wordIndex = 0;
+                }
+            });
+
+            displayNextSentence();
+        }
+
+        function displayNextSentence() {
+            if (!isRunning) return;
+
+            const sentence = paragraphs[sentenceIndex];
+            document.getElementById("sentenceDisplay").innerHTML = `
+                <div>${sentence.english}</div>
+                <div class="translation">${sentence.korean}</div>
+            `;
+            sentenceIndex = (sentenceIndex + 1) % paragraphs.length;
+
+            const wordCount = sentence.english.split(" ").length;
+            const displayTime = wordCount * 1000;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (sentenceIndex === 0) {
+                    document.getElementById("sentenceDisplay").innerHTML = "";
+                    displayNextWord();
+                } else {
+                    displayNextSentence();
+                }
+            }, displayTime);
+        }
+
+        function displayNextWord() {
+            if (!isRunning) return;
+
+            const words = Object.entries(vocabulary);
+            const word = words[wordIndex];
+            document.getElementById("wordDisplay").innerHTML = `
+                <div>${word[0]}</div>
+                <div class="translation">${word[1]}</div>
+            `;
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(() => {
+                if (!isRunning) return;
+                if (wordIndex === 0) {
+                    document.getElementById("wordDisplay").innerHTML = "";
+                    displayNextSentence();
+                } else {
+                    displayNextWord();
+                }
+            }, 2000);
+        }
+
+        function playAudio() {
+            const fileInput = document.getElementById("audioFile");
+            const audioPlayer = document.getElementById("audioPlayer");
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const objectURL = URL.createObjectURL(file);
+                audioPlayer.src = objectURL;
+                audioPlayer.play();
+            } else {
+                alert("Please select an audio file.");
+            }
+        }
+
+        function stopAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+
+        function populateParagraphs() {
+            const paragraphContainer = document.getElementById("paragraphs");
+            paragraphs.forEach(paragraph => {
+                const englishPara = document.createElement("div");
+                englishPara.className = "large-text";
+                englishPara.textContent = paragraph.english;
+
+                const koreanPara = document.createElement("div");
+                koreanPara.className = "large-text translation";
+                koreanPara.textContent = paragraph.korean;
+
+                paragraphContainer.appendChild(englishPara);
+                paragraphContainer.appendChild(koreanPara);
+            });
+        }
+
+        function populateVocabulary() {
+            const vocabContainer = document.getElementById("vocabulary");
+            for (const [english, korean] of Object.entries(vocabulary)) {
+                const englishWord = document.createElement("div");
+                englishWord.className = "large-text";
+                englishWord.textContent = english;
+
+                const koreanWord = document.createElement("div");
+                koreanWord.className = "large-text translation";
+                koreanWord.textContent = korean;
+
+                vocabContainer.appendChild(englishWord);
+                vocabContainer.appendChild(koreanWord);
+            }
+        }
+
+        populateParagraphs();
+        populateVocabulary();
+    </script>
+</body>
+</html>
